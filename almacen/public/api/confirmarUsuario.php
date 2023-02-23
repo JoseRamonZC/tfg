@@ -1,7 +1,7 @@
 
 <?php
 try {
-    $database = "deded";
+    $database = "prueba555";
     $user = "debianDB";
     $pass = "debianDB";
   

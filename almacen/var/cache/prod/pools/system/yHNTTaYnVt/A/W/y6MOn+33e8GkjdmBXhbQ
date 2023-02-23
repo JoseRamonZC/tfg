@@ -1,0 +1,51 @@
+<?php //28d72aa4a58529532e3df23714fcedad
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Query\\ParserResult'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ParserResult')),
+        clone ($p['Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor')),
+        clone ($p['Doctrine\\ORM\\Query\\ResultSetMapping'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ResultSetMapping')),
+    ],
+    null,
+    [
+        'Doctrine\\ORM\\Query\\ParserResult' => [
+            '_sqlExecutor' => [
+                $o[1],
+            ],
+            '_resultSetMapping' => [
+                $o[2],
+            ],
+            '_parameterMappings' => [
+                [
+                    'desde' => [
+                        0,
+                    ],
+                    'hasta' => [
+                        1,
+                    ],
+                ],
+            ],
+        ],
+        'Doctrine\\ORM\\Query\\Exec\\AbstractSqlExecutor' => [
+            '_sqlStatements' => [
+                1 => 'SELECT DISTINCT a0_.id AS id_0, a0_.fecha AS fecha_1 FROM asignacion a0_ INNER JOIN asignacion_lote a1_ ON a0_.id = a1_.asignacion_id INNER JOIN lote l2_ ON a1_.lote_id = l2_.id INNER JOIN almacen_producto a3_ ON l2_.producto_id = a3_.id INNER JOIN producto p4_ ON a3_.producto_id = p4_.id WHERE a0_.almacen_id = 1 AND CAST(a0_.fecha AS date) BETWEEN ? AND ? ORDER BY a0_.fecha ASC LIMIT 10',
+            ],
+        ],
+        'stdClass' => [
+            'scalarMappings' => [
+                2 => [
+                    'id_0' => '_dctrn_id',
+                    'fecha_1' => '_dctrn_ord0',
+                ],
+            ],
+            'typeMappings' => [
+                2 => [
+                    'id_0' => 'integer',
+                    'fecha_1' => 'datetime',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

@@ -1,0 +1,80 @@
+<?php //73a8942ce9207688de2f94bb997237fc
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Query\\ParserResult'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ParserResult')),
+        clone ($p['Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor')),
+        clone ($p['Doctrine\\ORM\\Query\\ResultSetMapping'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ResultSetMapping')),
+    ],
+    null,
+    [
+        'Doctrine\\ORM\\Query\\ParserResult' => [
+            '_sqlExecutor' => [
+                $o[1],
+            ],
+            '_resultSetMapping' => [
+                $o[2],
+            ],
+        ],
+        'Doctrine\\ORM\\Query\\Exec\\AbstractSqlExecutor' => [
+            '_sqlStatements' => [
+                1 => 'SELECT a0_.id AS id_0, a0_.cantidad AS cantidad_1, a0_.umbral AS umbral_2, a0_.fechaCreado AS fechaCreado_3, a0_.almacen_id AS almacen_id_4, a0_.producto_id AS producto_id_5, a0_.usuarioCreado_id AS usuarioCreado_id_6 FROM almacen_producto a0_ INNER JOIN producto p1_ ON a0_.producto_id = p1_.id WHERE a0_.almacen_id = 1 AND a0_.cantidad > 0 ORDER BY p1_.nombre ASC',
+            ],
+        ],
+        'stdClass' => [
+            'aliasMap' => [
+                2 => [
+                    'x' => 'App\\Entity\\AlmacenProducto',
+                ],
+            ],
+            'fieldMappings' => [
+                2 => [
+                    'id_0' => 'id',
+                    'cantidad_1' => 'cantidad',
+                    'umbral_2' => 'umbral',
+                    'fechaCreado_3' => 'fechaCreado',
+                ],
+            ],
+            'typeMappings' => [
+                2 => [
+                    'almacen_id_4' => 'integer',
+                    'producto_id_5' => 'integer',
+                    'usuarioCreado_id_6' => 'integer',
+                ],
+            ],
+            'entityMappings' => [
+                2 => [
+                    'x' => null,
+                ],
+            ],
+            'metaMappings' => [
+                2 => [
+                    'almacen_id_4' => 'almacen_id',
+                    'producto_id_5' => 'producto_id',
+                    'usuarioCreado_id_6' => 'usuarioCreado_id',
+                ],
+            ],
+            'columnOwnerMap' => [
+                2 => [
+                    'id_0' => 'x',
+                    'cantidad_1' => 'x',
+                    'umbral_2' => 'x',
+                    'fechaCreado_3' => 'x',
+                    'almacen_id_4' => 'x',
+                    'producto_id_5' => 'x',
+                    'usuarioCreado_id_6' => 'x',
+                ],
+            ],
+            'declaringClasses' => [
+                2 => [
+                    'id_0' => 'App\\Entity\\AlmacenProducto',
+                    'cantidad_1' => 'App\\Entity\\AlmacenProducto',
+                    'umbral_2' => 'App\\Entity\\AlmacenProducto',
+                    'fechaCreado_3' => 'App\\Entity\\AlmacenProducto',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

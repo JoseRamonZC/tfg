@@ -1,0 +1,96 @@
+<?php //26c532ad06566ae769977d31bf4cef41
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Query\\ParserResult'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ParserResult')),
+        clone ($p['Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor')),
+        clone ($p['Doctrine\\ORM\\Query\\ResultSetMapping'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ResultSetMapping')),
+    ],
+    null,
+    [
+        'Doctrine\\ORM\\Query\\ParserResult' => [
+            '_sqlExecutor' => [
+                $o[1],
+            ],
+            '_resultSetMapping' => [
+                $o[2],
+            ],
+            '_parameterMappings' => [
+                [
+                    'desde' => [
+                        0,
+                    ],
+                    'hasta' => [
+                        1,
+                    ],
+                ],
+            ],
+        ],
+        'Doctrine\\ORM\\Query\\Exec\\AbstractSqlExecutor' => [
+            '_sqlStatements' => [
+                1 => 'SELECT i0_.id AS id_0, i0_.fecha AS fecha_1, i0_.observaciones AS observaciones_2, i0_.albaran AS albaran_3, i0_.factura AS factura_4, i0_.fechaCreado AS fechaCreado_5, i0_.almacen_id AS almacen_id_6, i0_.proveedor_id AS proveedor_id_7, i0_.usuarioCreado_id AS usuarioCreado_id_8 FROM importacion i0_ INNER JOIN importacion_lote i1_ ON i0_.id = i1_.importacion_id INNER JOIN lote l2_ ON i1_.lote_id = l2_.id INNER JOIN almacen_producto a3_ ON l2_.producto_id = a3_.id INNER JOIN producto p4_ ON a3_.producto_id = p4_.id WHERE i0_.almacen_id = 1 AND CAST(i0_.fechaCreado AS date) BETWEEN ? AND ? ORDER BY i0_.fecha ASC',
+            ],
+        ],
+        'stdClass' => [
+            'aliasMap' => [
+                2 => [
+                    'x' => 'App\\Entity\\Importacion',
+                ],
+            ],
+            'fieldMappings' => [
+                2 => [
+                    'id_0' => 'id',
+                    'fecha_1' => 'fecha',
+                    'observaciones_2' => 'observaciones',
+                    'albaran_3' => 'albaran',
+                    'factura_4' => 'factura',
+                    'fechaCreado_5' => 'fechaCreado',
+                ],
+            ],
+            'typeMappings' => [
+                2 => [
+                    'almacen_id_6' => 'integer',
+                    'proveedor_id_7' => 'integer',
+                    'usuarioCreado_id_8' => 'integer',
+                ],
+            ],
+            'entityMappings' => [
+                2 => [
+                    'x' => null,
+                ],
+            ],
+            'metaMappings' => [
+                2 => [
+                    'almacen_id_6' => 'almacen_id',
+                    'proveedor_id_7' => 'proveedor_id',
+                    'usuarioCreado_id_8' => 'usuarioCreado_id',
+                ],
+            ],
+            'columnOwnerMap' => [
+                2 => [
+                    'id_0' => 'x',
+                    'fecha_1' => 'x',
+                    'observaciones_2' => 'x',
+                    'albaran_3' => 'x',
+                    'factura_4' => 'x',
+                    'fechaCreado_5' => 'x',
+                    'almacen_id_6' => 'x',
+                    'proveedor_id_7' => 'x',
+                    'usuarioCreado_id_8' => 'x',
+                ],
+            ],
+            'declaringClasses' => [
+                2 => [
+                    'id_0' => 'App\\Entity\\Importacion',
+                    'fecha_1' => 'App\\Entity\\Importacion',
+                    'observaciones_2' => 'App\\Entity\\Importacion',
+                    'albaran_3' => 'App\\Entity\\Importacion',
+                    'factura_4' => 'App\\Entity\\Importacion',
+                    'fechaCreado_5' => 'App\\Entity\\Importacion',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

@@ -14,7 +14,7 @@
             <div class="col-12 bg-white rounded my-3 p-5">
                 <h1>Disfrute de su experiencia</h1>
 
-            <?php include('installation.php'); ?>
+            <?php require('installation.php'); ?>
 
             </div>
         </div>

@@ -1,0 +1,84 @@
+<?php //603f6ec77e02c0c19fd58840a3610413
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Query\\ParserResult'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ParserResult')),
+        clone ($p['Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor')),
+        clone ($p['Doctrine\\ORM\\Query\\ResultSetMapping'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ResultSetMapping')),
+    ],
+    null,
+    [
+        'Doctrine\\ORM\\Query\\ParserResult' => [
+            '_sqlExecutor' => [
+                $o[1],
+            ],
+            '_resultSetMapping' => [
+                $o[2],
+            ],
+            '_parameterMappings' => [
+                [
+                    'dpid' => [
+                        0,
+                    ],
+                ],
+            ],
+        ],
+        'Doctrine\\ORM\\Query\\Exec\\AbstractSqlExecutor' => [
+            '_sqlStatements' => [
+                1 => 'SELECT a0_.id AS id_0, a0_.nombre AS nombre_1, a0_.descripcion AS descripcion_2, a0_.estado AS estado_3, a0_.fechaCreado AS fechaCreado_4, a0_.usuarioCreado_id AS usuarioCreado_id_5 FROM almacen a0_ WHERE a0_.id IN (?) ORDER BY a0_.nombre ASC',
+            ],
+        ],
+        'stdClass' => [
+            'aliasMap' => [
+                2 => [
+                    'x' => 'App\\Entity\\Almacen',
+                ],
+            ],
+            'fieldMappings' => [
+                2 => [
+                    'id_0' => 'id',
+                    'nombre_1' => 'nombre',
+                    'descripcion_2' => 'descripcion',
+                    'estado_3' => 'estado',
+                    'fechaCreado_4' => 'fechaCreado',
+                ],
+            ],
+            'typeMappings' => [
+                2 => [
+                    'usuarioCreado_id_5' => 'integer',
+                ],
+            ],
+            'entityMappings' => [
+                2 => [
+                    'x' => null,
+                ],
+            ],
+            'metaMappings' => [
+                2 => [
+                    'usuarioCreado_id_5' => 'usuarioCreado_id',
+                ],
+            ],
+            'columnOwnerMap' => [
+                2 => [
+                    'id_0' => 'x',
+                    'nombre_1' => 'x',
+                    'descripcion_2' => 'x',
+                    'estado_3' => 'x',
+                    'fechaCreado_4' => 'x',
+                    'usuarioCreado_id_5' => 'x',
+                ],
+            ],
+            'declaringClasses' => [
+                2 => [
+                    'id_0' => 'App\\Entity\\Almacen',
+                    'nombre_1' => 'App\\Entity\\Almacen',
+                    'descripcion_2' => 'App\\Entity\\Almacen',
+                    'estado_3' => 'App\\Entity\\Almacen',
+                    'fechaCreado_4' => 'App\\Entity\\Almacen',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

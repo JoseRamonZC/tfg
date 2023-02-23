@@ -41,7 +41,7 @@ DATABASE_URL="mysql://%DB-USER%:%DB-PASSWORD%@127.0.0.1:3306/%DB-NAME%?serverVer
 ###< symfony/messenger ###
 
 ###> symfony/mailer ###
-# MAILER_DSN=null://null
+MAILER_DSN=null://null
 ###< symfony/mailer ###
 
 ';
