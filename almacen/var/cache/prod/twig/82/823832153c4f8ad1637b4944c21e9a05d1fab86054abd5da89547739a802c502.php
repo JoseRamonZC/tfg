@@ -299,6 +299,6 @@ class __TwigTemplate_07d09cde264b6d5c70c7a451ca5125e636f02b6953274f36184ea1c6c87
 
     public function getSourceContext()
     {
-        return new Source("", "bootstrap_3_horizontal_layout.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\vendor\\symfony\\twig-bridge\\Resources\\views\\Form\\bootstrap_3_horizontal_layout.html.twig");
+        return new Source("", "bootstrap_3_horizontal_layout.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\vendor\\symfony\\twig-bridge\\Resources\\views\\Form\\bootstrap_3_horizontal_layout.html.twig");
     }
 }

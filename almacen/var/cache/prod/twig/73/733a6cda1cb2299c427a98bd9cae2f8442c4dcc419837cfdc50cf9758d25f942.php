@@ -97,6 +97,6 @@ class __TwigTemplate_d38417d4c11989c31b81b0e1cc27d64c141a046f346af0802da853295f0
 
     public function getSourceContext()
     {
-        return new Source("", "@KnpPaginator/Pagination/twitter_bootstrap_v4_font_awesome_sortable_link.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\vendor\\knplabs\\knp-paginator-bundle\\templates\\Pagination\\twitter_bootstrap_v4_font_awesome_sortable_link.html.twig");
+        return new Source("", "@KnpPaginator/Pagination/twitter_bootstrap_v4_font_awesome_sortable_link.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\vendor\\knplabs\\knp-paginator-bundle\\templates\\Pagination\\twitter_bootstrap_v4_font_awesome_sortable_link.html.twig");
     }
 }

@@ -141,6 +141,6 @@ class __TwigTemplate_464134a9e62c12d2691f3dfd1b64e850e49a18a19f695ffc7b05354a0b7
 
     public function getSourceContext()
     {
-        return new Source("", "almacen/inventario/lote.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\templates\\almacen\\inventario\\lote.html.twig");
+        return new Source("", "almacen/inventario/lote.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\templates\\almacen\\inventario\\lote.html.twig");
     }
 }

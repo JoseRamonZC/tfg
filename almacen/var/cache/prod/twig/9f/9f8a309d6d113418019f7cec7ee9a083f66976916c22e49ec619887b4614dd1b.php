@@ -179,6 +179,6 @@ class __TwigTemplate_2acd8e8b796096342e434dc8cc69c4bd403ec1f0204d3b43c0cc31a170f
 
     public function getSourceContext()
     {
-        return new Source("", "almacen/asignacion/lot.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\templates\\almacen\\asignacion\\lot.html.twig");
+        return new Source("", "almacen/asignacion/lot.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\templates\\almacen\\asignacion\\lot.html.twig");
     }
 }

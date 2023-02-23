@@ -281,6 +281,6 @@ M®õAÿI–Q≥?IêU∂òÚ“ö‡·qÔ
 
     public function getSourceContext()
     {
-        return new Source("", "@imagenes/logo.jpg", "C:\\xampp\\htdocs\\almacen\\Almacen\\public\\imagenes\\logo.jpg");
+        return new Source("", "@imagenes/logo.jpg", "C:\\xampp\\htdocs\\tfg\\almacen\\public\\imagenes\\logo.jpg");
     }
 }

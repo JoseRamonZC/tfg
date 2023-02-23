@@ -260,6 +260,6 @@ a:hover {
 
     public function getSourceContext()
     {
-        return new Source("", "@estilos/general.css", "C:\\xampp\\htdocs\\almacen\\Almacen\\public\\styles\\general.css");
+        return new Source("", "@estilos/general.css", "C:\\xampp\\htdocs\\tfg\\almacen\\public\\styles\\general.css");
     }
 }

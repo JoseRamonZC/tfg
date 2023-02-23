@@ -56,6 +56,6 @@ class __TwigTemplate_991966078cb4f85eec7da61bb74ec7470f732504765902442fd52e3cb96
 
     public function getSourceContext()
     {
-        return new Source("", "@DoctrineMigrations/Collector/icon.svg", "C:\\xampp\\htdocs\\almacen\\Almacen\\vendor\\doctrine\\doctrine-migrations-bundle\\Resources\\views\\Collector\\icon.svg");
+        return new Source("", "@DoctrineMigrations/Collector/icon.svg", "C:\\xampp\\htdocs\\tfg\\almacen\\vendor\\doctrine\\doctrine-migrations-bundle\\Resources\\views\\Collector\\icon.svg");
     }
 }

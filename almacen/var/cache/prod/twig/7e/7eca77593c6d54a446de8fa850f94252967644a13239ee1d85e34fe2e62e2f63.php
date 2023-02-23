@@ -149,6 +149,6 @@ class __TwigTemplate_56100c671e322eb82559939ed708b49dd2c66553769cf03cde393d47520
 
     public function getSourceContext()
     {
-        return new Source("", "@KnpPaginator/Pagination/tailwindcss_pagination.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\vendor\\knplabs\\knp-paginator-bundle\\templates\\Pagination\\tailwindcss_pagination.html.twig");
+        return new Source("", "@KnpPaginator/Pagination/tailwindcss_pagination.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\vendor\\knplabs\\knp-paginator-bundle\\templates\\Pagination\\tailwindcss_pagination.html.twig");
     }
 }

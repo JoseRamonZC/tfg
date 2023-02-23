@@ -177,6 +177,6 @@ class __TwigTemplate_9563f1cc9b40b33038ffcb36d6264eecb42677acce6328e5c2a417d534b
 
     public function getSourceContext()
     {
-        return new Source("", "default/pagination.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\templates\\default\\pagination.html.twig");
+        return new Source("", "default/pagination.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\templates\\default\\pagination.html.twig");
     }
 }

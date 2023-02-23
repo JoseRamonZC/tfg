@@ -72,6 +72,6 @@ class __TwigTemplate_7e06eb13818def495bde29af3442ab4f7ee526aae939e9e2036dfd868e8
 
     public function getSourceContext()
     {
-        return new Source("", "email/prueba.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\templates\\email\\prueba.html.twig");
+        return new Source("", "email/prueba.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\templates\\email\\prueba.html.twig");
     }
 }

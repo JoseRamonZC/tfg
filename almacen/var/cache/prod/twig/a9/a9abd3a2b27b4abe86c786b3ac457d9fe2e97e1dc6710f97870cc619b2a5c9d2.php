@@ -366,6 +366,6 @@ class __TwigTemplate_cde465a8e14ace3092db7b503e0fe46c28feb3b5cadd37a8af2b6d38ac0
 
     public function getSourceContext()
     {
-        return new Source("", "area_servicio/show.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\templates\\area_servicio\\show.html.twig");
+        return new Source("", "area_servicio/show.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\templates\\area_servicio\\show.html.twig");
     }
 }

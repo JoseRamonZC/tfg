@@ -70,6 +70,6 @@ class __TwigTemplate_b57c5fadf40a6b4d88bf3474b085db4ef4773e10755c005b8e0fe0a102e
 
     public function getSourceContext()
     {
-        return new Source("", "@KnpPaginator/Pagination/sortable_link.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\vendor\\knplabs\\knp-paginator-bundle\\templates\\Pagination\\sortable_link.html.twig");
+        return new Source("", "@KnpPaginator/Pagination/sortable_link.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\vendor\\knplabs\\knp-paginator-bundle\\templates\\Pagination\\sortable_link.html.twig");
     }
 }

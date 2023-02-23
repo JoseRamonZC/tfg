@@ -138,6 +138,6 @@ class __TwigTemplate_00a0bd0bb95f125004a8dc8b940ea2ba6b9885e747ca3801c6ae7071c9d
 
     public function getSourceContext()
     {
-        return new Source("", "@KnpPaginator/Pagination/semantic_ui_pagination.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\vendor\\knplabs\\knp-paginator-bundle\\templates\\Pagination\\semantic_ui_pagination.html.twig");
+        return new Source("", "@KnpPaginator/Pagination/semantic_ui_pagination.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\vendor\\knplabs\\knp-paginator-bundle\\templates\\Pagination\\semantic_ui_pagination.html.twig");
     }
 }

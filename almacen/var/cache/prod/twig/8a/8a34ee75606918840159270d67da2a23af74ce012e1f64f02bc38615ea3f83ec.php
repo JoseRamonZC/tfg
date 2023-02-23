@@ -61,6 +61,6 @@ class __TwigTemplate_6dbf800ab33ec88bc2819f358f6ddede3144125caa8b8b50a8a33300976
 
     public function getSourceContext()
     {
-        return new Source("", "@estilos/email.css", "C:\\xampp\\htdocs\\almacen\\Almacen\\public\\styles\\email.css");
+        return new Source("", "@estilos/email.css", "C:\\xampp\\htdocs\\tfg\\almacen\\public\\styles\\email.css");
     }
 }

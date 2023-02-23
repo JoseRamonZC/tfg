@@ -124,6 +124,6 @@ class __TwigTemplate_885b2aa1368da034fbac8db8dd075abb86eedb7648ca41cac844a96f67a
 
     public function getSourceContext()
     {
-        return new Source("", "default/logout.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\templates\\default\\logout.html.twig");
+        return new Source("", "default/logout.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\templates\\default\\logout.html.twig");
     }
 }

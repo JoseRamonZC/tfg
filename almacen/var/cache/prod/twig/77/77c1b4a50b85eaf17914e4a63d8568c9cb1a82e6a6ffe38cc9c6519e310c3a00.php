@@ -107,6 +107,6 @@ class __TwigTemplate_cd97f3e4cd39b418f9f6f981e0414effcb26d7ddd484ca0af1e9413ef23
 
     public function getSourceContext()
     {
-        return new Source("", "@Twig/Exception/error404.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\templates\\bundles\\TwigBundle\\Exception\\error404.html.twig");
+        return new Source("", "@Twig/Exception/error404.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\templates\\bundles\\TwigBundle\\Exception\\error404.html.twig");
     }
 }

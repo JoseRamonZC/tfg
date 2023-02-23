@@ -167,6 +167,6 @@ class __TwigTemplate_f7fe179bde5499c471b4fb7aa100ae4505b4cdc24e8f7958dc506c8512e
 
     public function getSourceContext()
     {
-        return new Source("", "foundation_6_layout.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\vendor\\symfony\\twig-bridge\\Resources\\views\\Form\\foundation_6_layout.html.twig");
+        return new Source("", "foundation_6_layout.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\vendor\\symfony\\twig-bridge\\Resources\\views\\Form\\foundation_6_layout.html.twig");
     }
 }

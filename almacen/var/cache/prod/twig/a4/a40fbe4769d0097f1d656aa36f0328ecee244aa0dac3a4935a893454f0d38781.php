@@ -236,6 +236,6 @@ class __TwigTemplate_44883fbef1c6b9b5a01fadecc482a884448f33bd88042bca7b61dc6e82d
 
     public function getSourceContext()
     {
-        return new Source("", "default/index.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\templates\\default\\index.html.twig");
+        return new Source("", "default/index.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\templates\\default\\index.html.twig");
     }
 }

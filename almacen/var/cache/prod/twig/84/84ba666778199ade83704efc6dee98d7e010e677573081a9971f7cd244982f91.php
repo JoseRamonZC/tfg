@@ -97,6 +97,6 @@ class __TwigTemplate_6e833d6b0cdcaced351e91e7bf9601b4d2ce741cc7f3b1741eef7112c07
 
     public function getSourceContext()
     {
-        return new Source("", "@KnpPaginator/Pagination/semantic_ui_sortable_link.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\vendor\\knplabs\\knp-paginator-bundle\\templates\\Pagination\\semantic_ui_sortable_link.html.twig");
+        return new Source("", "@KnpPaginator/Pagination/semantic_ui_sortable_link.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\vendor\\knplabs\\knp-paginator-bundle\\templates\\Pagination\\semantic_ui_sortable_link.html.twig");
     }
 }

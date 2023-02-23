@@ -615,6 +615,6 @@ class __TwigTemplate_2994745ed5ba6643718710d4738216823a548a8af9b93ee08cc804cd612
 
     public function getSourceContext()
     {
-        return new Source("", "producto/show.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\templates\\producto\\show.html.twig");
+        return new Source("", "producto/show.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\templates\\producto\\show.html.twig");
     }
 }

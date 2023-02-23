@@ -137,6 +137,6 @@ class __TwigTemplate_67346eaf208eb83c3c2d5d1141ae059f7e0f5abf65af1e4b001b3d7d4fb
 
     public function getSourceContext()
     {
-        return new Source("", "proveedor/show.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\templates\\proveedor\\show.html.twig");
+        return new Source("", "proveedor/show.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\templates\\proveedor\\show.html.twig");
     }
 }

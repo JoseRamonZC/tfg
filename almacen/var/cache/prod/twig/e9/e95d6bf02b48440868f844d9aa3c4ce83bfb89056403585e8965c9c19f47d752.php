@@ -174,6 +174,6 @@ class __TwigTemplate_89a531c825e46da9f77881ffeb688674d859ef19b193611f577743e89e3
 
     public function getSourceContext()
     {
-        return new Source("", "almacen/traslado/lot.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\templates\\almacen\\traslado\\lot.html.twig");
+        return new Source("", "almacen/traslado/lot.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\templates\\almacen\\traslado\\lot.html.twig");
     }
 }

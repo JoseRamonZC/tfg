@@ -72,6 +72,6 @@ a¿¤oUrL?8¿XÒª”ÔéÍ~[³.\tTñ¸7Âc~ÞNô‰œ¼Èo;<(iº¤ÏKúŠ¤Û¼ê;Ìž1/£‚µÞyn(pHÞ?2ž¹9Ú
 
     public function getSourceContext()
     {
-        return new Source("", "@imagenes/logo_blanco.png", "C:\\xampp\\htdocs\\almacen\\Almacen\\public\\imagenes\\logo_blanco.png");
+        return new Source("", "@imagenes/logo_blanco.png", "C:\\xampp\\htdocs\\tfg\\almacen\\public\\imagenes\\logo_blanco.png");
     }
 }

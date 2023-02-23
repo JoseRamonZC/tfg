@@ -112,6 +112,6 @@ class __TwigTemplate_91ff6947333f7422e66af4484fe90137dbef62c7bdf5672f257ed49de6c
 
     public function getSourceContext()
     {
-        return new Source("", "@KnpPaginator/Pagination/filtration.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\vendor\\knplabs\\knp-paginator-bundle\\templates\\Pagination\\filtration.html.twig");
+        return new Source("", "@KnpPaginator/Pagination/filtration.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\vendor\\knplabs\\knp-paginator-bundle\\templates\\Pagination\\filtration.html.twig");
     }
 }

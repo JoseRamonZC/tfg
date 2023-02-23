@@ -245,6 +245,6 @@ class __TwigTemplate_e0a214fda85799e1e08964ef8f320f44f132700aebe948bff9d2003ffbd
 
     public function getSourceContext()
     {
-        return new Source("", "@KnpPaginator/Pagination/bulma_pagination.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\vendor\\knplabs\\knp-paginator-bundle\\templates\\Pagination\\bulma_pagination.html.twig");
+        return new Source("", "@KnpPaginator/Pagination/bulma_pagination.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\vendor\\knplabs\\knp-paginator-bundle\\templates\\Pagination\\bulma_pagination.html.twig");
     }
 }

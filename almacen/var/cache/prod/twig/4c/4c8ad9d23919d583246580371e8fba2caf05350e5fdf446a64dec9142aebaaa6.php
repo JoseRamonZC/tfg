@@ -190,6 +190,6 @@ class __TwigTemplate_b20262c250b9af0b481f5ab5bb9c7749d8480d86651146268d608faff56
 
     public function getSourceContext()
     {
-        return new Source("", "@KnpPaginator/Pagination/materialize_pagination.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\vendor\\knplabs\\knp-paginator-bundle\\templates\\Pagination\\materialize_pagination.html.twig");
+        return new Source("", "@KnpPaginator/Pagination/materialize_pagination.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\vendor\\knplabs\\knp-paginator-bundle\\templates\\Pagination\\materialize_pagination.html.twig");
     }
 }

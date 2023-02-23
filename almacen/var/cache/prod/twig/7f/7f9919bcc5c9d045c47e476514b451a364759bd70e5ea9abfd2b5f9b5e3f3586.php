@@ -214,6 +214,6 @@ class __TwigTemplate_b3156363467002ddb17433344df61264fda778999268bd4bdc7ffea1997
 
     public function getSourceContext()
     {
-        return new Source("", "proveedor/index.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\templates\\proveedor\\index.html.twig");
+        return new Source("", "proveedor/index.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\templates\\proveedor\\index.html.twig");
     }
 }

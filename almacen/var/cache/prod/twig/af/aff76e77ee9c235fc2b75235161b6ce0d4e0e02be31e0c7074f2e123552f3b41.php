@@ -224,6 +224,6 @@ AﬂÀK[_ê\000†ª\000\000\000\000\000\000ÄN3SVƒœ˙hßÊ¢åçÕ\000–›º)\000\000\000\0
 
     public function getSourceContext()
     {
-        return new Source("", "@imagenes/logo.png", "C:\\xampp\\htdocs\\almacen\\Almacen\\public\\imagenes\\logo.png");
+        return new Source("", "@imagenes/logo.png", "C:\\xampp\\htdocs\\tfg\\almacen\\public\\imagenes\\logo.png");
     }
 }

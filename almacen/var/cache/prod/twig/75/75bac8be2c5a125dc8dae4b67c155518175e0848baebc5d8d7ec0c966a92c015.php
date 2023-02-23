@@ -245,6 +245,6 @@ class __TwigTemplate_12ff461028b941f1fcdaedf38c3b9c9ed3c4f5cd614d507b42791f23e82
 
     public function getSourceContext()
     {
-        return new Source("", "tailwind_2_layout.html.twig", "C:\\xampp\\htdocs\\almacen\\Almacen\\vendor\\symfony\\twig-bridge\\Resources\\views\\Form\\tailwind_2_layout.html.twig");
+        return new Source("", "tailwind_2_layout.html.twig", "C:\\xampp\\htdocs\\tfg\\almacen\\vendor\\symfony\\twig-bridge\\Resources\\views\\Form\\tailwind_2_layout.html.twig");
     }
 }
