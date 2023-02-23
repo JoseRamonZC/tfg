@@ -1,0 +1,17 @@
+categories_index:
+    path: /
+    controller: App\Controller\CategoryController::index
+
+categories_show:
+    path:     /{id}/detalle
+    controller: App\Controller\CategoryController::show
+    methods:  [GET, POST]
+
+categories_delete:
+    path:     /{id}/borrar
+    controller: App\Controller\CategoryController::delete
+    methods:  [GET, POST]
+        
+categories_subcategories:
+    resource: "subcategories.yaml"
+    prefix:   /{id}/subcategorias

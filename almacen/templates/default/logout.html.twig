@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <title>SACYR Inventario | Sesión finalizada</title>
+        <meta name="description" content="SACYR Inventario">
+        <meta name="viewport" content="width=device-width,initial-scale=1"> 
+        <link rel="shortcut icon" href="{{ asset('imagenes/fav.png') }}" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+        <link href="{{ asset('metronic8/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('metronic8/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('styles/general.css') }}" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body id="kt_body" class="bg-body app-blank">
+        <div class="d-flex flex-column flex-root" id="kt_app_page">
+            <div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed" style="background-color: #FFFFFF">
+                <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
+                    <div class="mb-12">
+                        <img alt="Logo" src="{{ asset('imagenes/logo.png') }}" class="h-150px" />
+                    </div>
+                    <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
+                        <div class="text-center mb-10">
+                            <h2 class="text-dark mb-3">Has cerrado la sesión correctamente</h2>
+                            <div class="text-gray-400 fw-bold fs-4">Gestión de inventario</div>
+                        </div>
+                        <div class="text-center">
+                            <a href="{{ path("app_login") }}" class="btn btn-lg btn-primary w-100">
+                                <span class="indicator-label">Volver al inicio de sesión</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-center flex-column-auto p-10">
+                    <div class="d-flex align-items-center fw-bold fs-6">
+                        SACYR {{ 'now' | date('Y') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="{{ asset('metronic8/plugins/global/plugins.bundle.js') }}"></script>
+        <script src="{{ asset('metronic8/js/scripts.bundle.js') }}"></script>
+    </body>
+</html>

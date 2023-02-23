@@ -1,0 +1,34 @@
+when@prod:
+    monolog:
+        handlers:
+            main:
+                type:         fingers_crossed
+                action_level: critical
+                handler:      grouped
+            grouped:
+                type:    group
+                members: [streamed, deduplicated]
+            streamed:
+                type:  stream
+                path:  '%kernel.logs_dir%/%kernel.environment%.log'
+                level: debug
+            deduplicated:
+                type:    deduplication
+    #            handler: swift
+                handler: mailer
+    #        swift:
+    #            type:         swift_mailer
+    #            from_email:   'info@serglobinmelilla.es'
+    #            to_email:     'ricardonb@serglobin.es'
+    #            subject:      '!Error en la aplicación de Emvismesa Fianzas! %%message%%'
+    #            level:        debug
+    #            formatter:    monolog.formatter.html
+    #            content_type: text/html
+            mailer:
+                type:         symfony_mailer
+                from_email:   'info@serglobinmelilla.es'
+                to_email:     'ricardonb@serglobin.es'
+                subject:      '!Error en la aplicación de Emvismesa Fianzas! %%message%%'
+                level:        debug
+                formatter:    monolog.formatter.html
+                content_type: text/html

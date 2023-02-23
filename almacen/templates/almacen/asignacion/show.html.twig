@@ -1,0 +1,251 @@
+{% extends 'base.html.twig' %}
+{% block title %}Detalle de la asignación{% endblock %}
+{% block body %}
+    <div class="app-toolbar align-items-center justify-content-between">
+        <div class="d-flex flex-grow-1 flex-stack flex-wrap gap-2 mb-n10" id="kt_toolbar">
+            <div class="d-flex flex-column align-items-start me-3 gap-2">
+                <h1 class="d-flex text-dark fw-bolder m-0 fs-3">Detalle de la asignación de materiales</h1>
+                <ul class="breadcrumb breadcrumb-dot fw-bold text-gray-600 fs-7">
+                    <li class="breadcrumb-item text-gray-600">
+                        <a href="{{ path('app_index') }}" class="text-gray-600 text-hover-primary">Inicio</a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-600">
+                        <a href="{{ path('warehouse_assignament_index',{'almacen':almacen.id}) }}" class="text-gray-600 text-hover-primary">Asignaciones</a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-600">Detalle de la asignación de materiales</li>
+                </ul>
+            </div>
+            <div class="d-flex align-items-center py-2">
+                <a href="{{ path('warehouse_assignament_index',{'almacen':almacen.id}) }}" class="btn btn-sm btn-primary" >
+                    Volver al listado de asignaciones</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-content flex-column-fluid" id="kt_app_content">
+        <div class="card">
+            <form action="" method="post">
+                <div class="card-body">
+                    <h5 class="card-title">Datos de la asignación de materiales</h5>
+                    <div class="card-text">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12 col-md-4 mb-3">
+                                                <div class="form-group">
+                                                    <label class="form-label">Fecha:</label>
+                                                    <input value="{{ asignacion.fecha | date('d-m-Y') }}" name="fecha" type="text" class="form-control" id='kt_flatpickr' required pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])-(0[1-9]|1[012])-[0-9]{4}" title="La fecha debe formarse como dd-mm-yyyy">
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-4 mb-3">
+                                                <label for="areaServicio" class="form-label">Área de servicio:</label>
+                                                <select name="areaServicio" class="form-select form-select-solid" select2="areaServicio" data-kt-select2="true" data-placeholder="Seleccionar">
+                                                    {% for objeto in areas %}
+                                                        <option  {% if objeto == asignacion.areaServicio %}selected{% endif %} value="{{ objeto.id }}">{{ objeto.nombre }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <div class="col-12 col-md-4 mb-3">
+                                                <div class="form-group">
+                                                    <label class="form-label">Terceros:</label>
+                                                    <input name="terceros" type="text" value="{{ asignacion.terceros }}" class="form-control" >
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-4 mb-3">
+                                                <div class="form-group">
+                                                    <label class="form-label">Encargado:</label>
+                                                    <input name="encargado" type="text" value="{{ asignacion.encargado }}" class="form-control" >
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-4 mb-3">
+                                                <div class="form-group">
+                                                    <label class="form-label">Orden de trabajo:</label>
+                                                    <textarea name="ordenTrabajo" class="form-control">{{ asignacion.ordenTrabajo }}</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-4 mb-3">
+                                                <div class="form-group">
+                                                    <label class="form-label">Observaciones:</label>
+                                                    <textarea name="observaciones" class="form-control">{{ asignacion.observaciones }}</textarea>
+                                                </div>
+                                            </div>                                                
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" name="boton" value="editar" class="btn btn-primary">Guardar modificación</button>
+                </div>
+            </form>
+        </div>
+        <div class="card mt-5">
+            <form action="" method="post">
+                <div class="card-body">
+                    <h5 class="card-title">Lotes incluidos en la asignación de materiales</h5>
+                    <div class="card-text">
+                        <table class="table table-hover table-rounded table-striped table-row-bordered border gy-7 gs-7">
+                            <thead>
+                                <tr>
+                                    <th>PRODUCTO</th>
+                                    <th>LOTE</th>
+                                    <th>CANTIDAD</th>
+                                    <th width="50px">DETALLE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for objeto in asignacion.lotes %}
+                                    <tr>
+                                        <td>{{ objeto.lote.producto.producto }}</td>
+                                        <td>{{ objeto.lote }}</td>
+                                        <td>{{ objeto.cantidad }}</td>
+                                        <td class="text-center align-middle">
+                                            <a class="btn btn-primary btn-icon" href="{{ path('warehouse_assignament_lot_show',{'almacen':almacen.id,'id':asignacion.id,'asignacionLote':objeto.id}) }}">
+                                                <i class="las la-eye fs-2x"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table> 
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="#"  data-bs-toggle="modal" data-bs-target="#kt_crearAsignacion" class="btn btn-primary">Añadir más lotes</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal fade" id="kt_crearAsignacion" aria-labelledby="crearAsignacionLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <form action="" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Añadir lotes</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12 col-lg-5 mt-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Buscador</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-12 col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="categoria" class="form-label">Categoría</label>
+                                                        <select name="categoria" id="categoria" class="form-select form-select-solid" select2="categoria2" data-kt-select2="true" data-placeholder="Seleccionar">
+                                                            <option value=" ">---</option>
+                                                            {% for objeto in categorias %}
+                                                                <option value="{{ objeto.id }}">{{ objeto }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-12 mt-3">
+                                                    <div class="form-group">
+                                                        <label class="form-label">Subcategoría:</label>
+                                                        <select name="subcategoria" class="form-select form-select-solid" id="subcategoria" >
+                                                            <option data-categoria="0" value="">---</option>
+                                                            {% for objeto in subcategorias %}
+                                                                <option data-categoria="{{ objeto.categoria.id }}" value="{{ objeto.id }}">{{ objeto.nombre }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6 mt-3">
+                                                    <div class="form-group">
+                                                        <select name="tipo" id="tipo" class="form-select form-select-solid" >
+                                                            <option value="nombre">Nombre</option>
+                                                            <option value="codigo">Código</option>
+                                                            <option value="referencia">Referencia</option>
+                                                            <option value="codigoBarra">Código de barras</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-md-6 mt-3">
+                                                    <div class="form-group">
+                                                        <input name="referencia" id="referencia" type="text" class="form-control" />
+                                                        <input type="hidden" name="almacen" value="{{ almacen.id }}" class="form-control" id="almacen" autocomplete="off" />
+                                                    </div>
+                                                </div>
+                                                <div id="alerta-producto" style="display: none;">
+                                                    <div class="col-12 col-md-12 mt-3">
+                                                        <div class="alert alert-warning mt-10" role="alert">
+                                                            <strong>No existe ningún producto con las características buscadas.</strong> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <hr />
+                                                    <div class="table-responsive" id="tabla" style="display: none;">
+                                                        <table class="table table-hover table-rounded table-striped table-row-bordered border gy-7 gs-7">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>FOTO</th>
+                                                                    <th>PRODUCTO</th>
+                                                                    <th>LOTE</th>
+                                                                    <th width="50px">AÑADIR</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="productos"></tbody>
+                                                        </table> 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                            <div class="col-12 col-lg-7 mt-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Lotes</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-12 col-md-12">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-hover table-rounded table-striped table-row-bordered border gy-7 gs-7">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>FOTO</th>
+                                                                    <th>NOMBRE</th>
+                                                                    <th>LOTE</th>
+                                                                    <th>CANTIDAD</th>
+                                                                    <th width="50px">QUITAR</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="traslado"></tbody>
+                                                        </table> 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" name="boton" value="add" class="btn btn-primary">Añadir lotes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script src="{{ asset('javascript/traslado.js') }}"></script>
+{% endblock %}

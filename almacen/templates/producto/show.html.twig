@@ -1,0 +1,312 @@
+{% extends 'base.html.twig' %}
+{% block title %}Detalle del producto{% endblock %}
+{% block body %}
+    <div class="app-toolbar align-items-center justify-content-between">
+        <div class="d-flex flex-grow-1 flex-stack flex-wrap gap-2 mb-n10" id="kt_toolbar">
+            <div class="d-flex flex-column align-items-start me-3 gap-2">
+                <h1 class="d-flex text-dark fw-bolder m-0 fs-3">Detalle del producto {{ producto.nombre }}</h1>
+                <ul class="breadcrumb breadcrumb-dot fw-bold text-gray-600 fs-7">
+                    <li class="breadcrumb-item text-gray-600">
+                        <a href="{{ path('app_index') }}" class="text-gray-600 text-hover-primary">Inicio</a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-600">
+                        <a href="{{ path('products_index') }}" class="text-gray-600 text-hover-primary">Productos</a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-600">Detalle del producto</li>
+                </ul>
+            </div>
+            <div class="d-flex align-items-center py-2">
+                <a href="{{ path('products_index') }}" class="btn btn-sm btn-primary" >
+                    Volver al listado de productos</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-content flex-column-fluid" id="kt_app_content">
+        <div class="mb-5 hover-scroll-x">
+            <div class="d-grid">
+                <ul class="nav nav-tabs flex-nowrap text-nowrap">
+                    <li class="nav-item">
+                        <a class="nav-link w-100 active btn btn-flex btn-active-light-sacyr btn-color-gray-600" data-bs-toggle="tab" href="#kt_tab_producto">
+                            <i class="las la-boxes fs-2x"></i> Detalle del producto
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link w-100 btn btn-flex btn-active-light-sacyr btn-color-gray-600" data-bs-toggle="tab" href="#kt_tab_stocks">
+                            <i class="las la-warehouse fs-2x"></i> Stock en almacenes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link w-100 btn btn-flex btn-active-light-sacyr btn-color-gray-600" data-bs-toggle="tab" href="#kt_tab_importaciones">
+                            <i class="las la-file-invoice fs-2x"></i> Recepción de pedidos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link w-100 btn btn-flex btn-active-light-sacyr btn-color-gray-600" data-bs-toggle="tab" href="#kt_tab_traslados">
+                            <i class="las la-truck-moving fs-2x"></i> Traslados
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link w-100 btn btn-flex btn-active-light-sacyr btn-color-gray-600" data-bs-toggle="tab" href="#kt_tab_asignaciones">
+                            <i class="las la-dolly fs-2x"></i> Asignación de materiales
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="kt_tab_producto" role="tabpanel">
+                <div class="card">
+                    <form action="#" method="post" enctype='multipart/form-data'>
+                        <div class="card-header">
+                            <div class="card-title d-flex align-items-center">
+                                <h3>Producto</h3>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-12 col-lg-6">
+                                    <label for="nombre" class="form-label">Nombre</label>
+                                    <input type="text" name="nombre" value="{{ producto.nombre }}" required class="form-control" id="producto" autocomplete="off">
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <label for="codigo" class="form-label">ID</label>
+                                    <input type="text" disabled value="{{ producto.id }}" class="form-control" id="codigo" autocomplete="off">
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <label for="codigo" class="form-label">Código</label>
+                                    <input type="text" name="codigo" value="{{ producto.codigo }}" class="form-control" id="codigo" autocomplete="off">
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <label for="referencia" class="form-label">Referencia</label>
+                                    <input type="text" name="referencia" value="{{ producto.referencia }}" class="form-control" id="referencia" autocomplete="off">
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <label for="codigoBarra" class="form-label">Código de barras</label>
+                                    <input type="text" name="codigoBarra" value="{{ producto.codigoBarra }}" class="form-control" id="codigoBarra" autocomplete="off">
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <label for="precio" class="form-label">Precio</label>
+                                    <input type="number" name="precio" value="{{ producto.precio }}" step="any" min="0" required class="form-control" id="precio" autocomplete="off">
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <label for="categoria" class="form-label">Categoría</label>
+                                    <select name="categoria" class="form-select form-select-solid" id="categoria" data-kt-select2="true" data-placeholder="Seleccionar">
+                                        <option value=" ">---</option>
+                                        {% for objeto in categorias %}
+                                            <option {% if objeto == producto.categoria %}selected{% endif %} value="{{ objeto.id }}">{{ objeto }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <label class="form-label">Subcategoría:</label>
+                                    <select name="subcategoria" class="form-control" id="subcategoria">
+                                        <option data-categoria="0" value="">---</option>
+                                        {% for objeto in subcategorias %}
+                                            <option data-categoria="{{ objeto.categoria.id }}" {% if producto.subcategoria %}{% if objeto.categoria != producto.subcategoria.categoria %}hidden{% endif %}{% else %}hidden{% endif %} value="{{ objeto.id }}" {% if objeto == producto.subcategoria %}selected{% endif %}>{{ objeto.nombre }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <label for="descripcion" class="form-label">Descripción</label>
+                                    <textarea name="descripcion" class="form-control" autocomplete="off">{{ producto.descripcion }}</textarea>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <label class="form-label">Foto:</label>
+                                    <label for="fileUpload" class="file-upload btn btn-primary btn-block">
+                                        <i class="fa fa-upload mr-2"></i>Subir foto ...<input name="foto" id="fileUpload" type="file" accept="image/*">
+                                    </label>
+                                </div>
+                                {% if producto.foto %}
+                                    <div class="col-12 col-lg-6">
+                                        <div class="card" style="height: 455px;">
+                                            <div class="card-body align-self-center">
+                                                <div style="padding: 5px; border: gray solid 1px; border-radius: 5px;">
+                                                    <img style="width: 100%;max-height: 410px;" src="{{ path('products_photo',{'id':producto.id}) }}" />
+                                                </div>                                        
+                                            </div>                                        
+                                        </div>
+                                    </div>
+                                {% endif %}           
+                            </div>     
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Guardar modificación</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="kt_tab_stocks" role="tabpanel">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title d-flex align-items-center">
+                            <h3>Stock en almacenes</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-rounded table-striped table-row-bordered border gy-7 gs-7">
+                                <thead>
+                                    <tr>
+                                        <th>ALMACÉN</th>
+                                        <th>CANTIDAD</th>
+                                        <th>LOTES</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for objeto in lotes %}
+                                        <tr>
+                                            <td>{{ objeto.almacen }}</td>
+                                            <td>{{ objeto.cantidad }}</td>
+                                            <td>
+                                                <table class="table table-hover table-rounded table-striped table-row-bordered border gy-7 gs-7">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>LOTE</th>
+                                                            <th>CANTIDAD</th>
+                                                            <th>FECHA CADUCIDAD</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {% for lote in objeto.lotes %}
+                                                            <tr>
+                                                                <td>{{ lote.lote }}</td>
+                                                                <td>{{ lote.cantidad }}</td>
+                                                                <td class="align-middle">
+                                                                    {% if lote.fechaCaducidad %}
+                                                                        {% if lote.fechaCaducidad <= 'now'|date_modify("+0 day") %}
+                                                                            <i class="las la-exclamation-triangle text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Lote caducado."></i>
+                                                                        {% endif %}
+                                                                    {% endif %}
+                                                                    {{ lote.fechaCaducidad ? lote.fechaCaducidad | date('d-m-Y') }}
+                                                                </td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table> 
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="kt_tab_importaciones" role="tabpanel">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title d-flex align-items-center">
+                            <h3>Recepción de pedidos</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-rounded table-striped table-row-bordered border gy-7 gs-7">
+                                <thead>
+                                    <tr>
+                                        <th>PEDIDO</th>
+                                        <th>LOTE</th>
+                                        <th>CANTIDAD</th>
+                                        <th class="text-right">PRECIO</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for objeto in importaciones %}
+                                        <tr>
+                                            <td>
+                                                <b>Almacén:</b> {{ objeto.importacion.almacen }}<br />
+                                                <b>Factura:</b> {{ objeto.importacion.factura }}<br />
+                                                <b>Albarán:</b> {{ objeto.importacion.albaran }}<br />
+                                                <b>Fecha:</b> {{ objeto.importacion.fecha | date('d-m-Y') }}<br />
+                                                <b>Proveedor:</b> {{ objeto.importacion.proveedor }}{{ objeto.importacion.proveedor ? " - "~objeto.importacion.proveedor.direccion }}
+                                            </td>
+                                            <td>{{ objeto.lote.lote }}</td>
+                                            <td>{{ objeto.cantidad }}</td>
+                                            <td class="text-right">{{ objeto.precio | number_format(2,',','.') }} €/ud ({{ (objeto.precio*objeto.cantidad) | number_format(2,',','.') }} €)</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="kt_tab_traslados" role="tabpanel">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title d-flex align-items-center">
+                            <h3>Traslados</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-rounded table-striped table-row-bordered border gy-7 gs-7">
+                                <thead>
+                                    <tr>
+                                        <th>ALMACÉN</th>
+                                        <th>FECHA</th>
+                                        <th>LOTE</th>
+                                        <th>CANTIDAD</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for objeto in traslados %}
+                                        <tr>
+                                            <td>
+                                                {{ objeto.traslado.almacenA }} -> {{ objeto.traslado.almacenB }}
+                                                {% if objeto.traslado.observaciones %}{{ objeto.traslado.observaciones }}{% endif %}
+                                            </td>
+                                            <td>{{ objeto.traslado.fecha | date('d-m-Y') }}</td>
+                                            <td>{{ objeto.lote.lote }}</td>
+                                            <td>{{ objeto.cantidad }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="kt_tab_asignaciones" role="tabpanel">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title d-flex align-items-center">
+                            <h3>Asignación de materiales</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-rounded table-striped table-row-bordered border gy-7 gs-7">
+                                <thead>
+                                    <tr>
+                                        <th>ÁREA DE SERVICIO</th>
+                                        <th>FECHA</th>
+                                        <th>ASIGNACIÓN</th>
+                                        <th>LOTE</th>
+                                        <th>CANTIDAD</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for objeto in asignaciones %}
+                                        <tr>
+                                            <td>{% if objeto.asignacion.terceros %}{{ objeto.asignacion.terceros }}{% else %}{{ objeto.asignacion.areaServicio }}{% endif %}</td>
+                                            <td>{{ objeto.asignacion.fecha | date('d-m-Y') }}</td>
+                                            <td>
+                                                Encargado: {{ objeto.asignacion.encargado }}<br />
+                                                Orden de trabajo: {{ objeto.asignacion.ordenTrabajo }}<br />
+                                                Observaciones: {{ objeto.asignacion.observaciones }}
+                                            </td>
+                                            <td>{{ objeto.lote.lote }}</td>
+                                            <td>{{ objeto.cantidad }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+subcategories_index:
+    path: /
+    controller: App\Controller\SubcategoryController::index
+
+subcategories_show:
+    path:     /{sub}/detalle
+    controller: App\Controller\SubcategoryController::show
+    methods:  [GET, POST]
+
+subcategories_delete:
+    path:     /{sub}/borrar
+    controller: App\Controller\SubcategoryController::delete
+    methods:  [GET, POST]

@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+{% block title %}Productos{% endblock %}
+{% block body %}
+    <div class="app-toolbar align-items-center justify-content-between">
+        <div class="d-flex flex-grow-1 flex-stack flex-wrap gap-2 mb-n10" id="kt_toolbar">
+            <div class="d-flex flex-column align-items-start me-3 gap-2">
+                <h1 class="d-flex text-dark fw-bolder m-0 fs-3">Productos</h1>
+                <ul class="breadcrumb breadcrumb-dot fw-bold text-gray-600 fs-7">
+                    <li class="breadcrumb-item text-gray-600">
+                        <a href="{{ path('app_index') }}" class="text-gray-600 text-hover-primary">Inicio</a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-600">Productos</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-content flex-column-fluid" id="kt_app_content">
+
+        <form action="" method="get">
+            <div class="card mb-7">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="position-relative w-md-400px me-md-2">
+                            <input type="text" class="form-control form-control-solid ps-10" name="producto" value="{{ producto }}" placeholder="Producto/Código/Referencia/Código de barras" />
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <button type="submit" class="btn btn-primary me-5">Buscar</button>
+                            <a id="kt_horizontal_search_advanced_link" class="btn btn-link" data-bs-toggle="collapse" href="#kt_advanced_search_form">Búsqueda avanzada</a>
+                        </div>
+                    </div>
+                    {% if categoria or id == "0" or id  %}
+                        {% set buscadorAvanzado = "show" %}
+                    {% else %}
+                        {% set buscadorAvanzado = "" %}
+                    {% endif %}
+                    <div class="collapse {{ buscadorAvanzado }}" id="kt_advanced_search_form">
+                        <div class="separator separator-dashed mt-9 mb-6"></div>
+                        <div class="row g-8 align-items-center">
+                            <div class="col-3">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span>ID</span>
+                                </label>
+                                <input type="number" min="1" class="form-control form-control-solid ps-10" name="id" value="{{ id }}" placeholder="ID" />
+                            </div>
+                            <div class="col-3">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span>Categoría</span>
+                                </label>
+                                <select name="categoria" class="form-select form-select-solid" data-placeholder="Categoría">
+                                    <option value="">---</option>
+                                    {% for objeto in categorias %}
+                                        <option value="{{ objeto.id }}" {% if objeto.id == categoria %}selected{% endif %}>{{ objeto }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-rounded table-striped table-row-bordered border gy-7 gs-7">
+                        <thead>
+                            <tr>
+                                <th>FOTO</th>
+                                <th>NOMBRE</th>
+                                <th>ID</th>
+                                <th>CÓDIGO</th>
+                                <th>REFERENCIA</th>
+                                <th>CÓDIGO DE BARRA</th>
+                                <th>CATEGORÍA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for objeto in productos %}
+                                <tr>
+                                    <td>
+                                        {% if objeto.foto %}
+                                            <img width="100px" src="{{ path('products_photo',{'id':objeto.id}) }}" />
+                                        {% else %}
+                                            <img width="100px" src="{{ asset('imagenes/noimagen.png') }}" />
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ objeto.nombre }}</td>
+                                    <td>{{ objeto.id }}</td>
+                                    <td>{{ objeto.codigo }}</td>
+                                    <td>{{ objeto.referencia }}</td>
+                                    <td>{{ objeto.codigoBarra }}</td>
+                                    <td>
+                                        {{ objeto.categoria }}<br />
+                                        {{ objeto.subcategoria }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table> 
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="navigation">
+                    {{ knp_pagination_render(productos) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

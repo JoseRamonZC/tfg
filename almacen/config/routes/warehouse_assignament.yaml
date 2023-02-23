@@ -1,0 +1,18 @@
+warehouse_assignament_index:
+    path: /
+    controller: App\Controller\WarehouseAssignamentController::index
+
+warehouse_assignament_show:
+    path:     /{id}/detalle
+    controller: App\Controller\WarehouseAssignamentController::show
+    methods:  [GET, POST]
+
+warehouse_assignament_delete:
+    path:     /{id}/borrar
+    controller: App\Controller\WarehouseAssignamentController::delete
+    methods:  [GET, POST]
+
+warehouse_assignament_lot_show:
+    path:     /{id}/detalle/{asignacionLote}/lote
+    controller: App\Controller\WarehouseAssignamentController::showLot
+    methods:  [GET, POST]

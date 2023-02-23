@@ -1,0 +1,18 @@
+warehouse_stock_index:
+    path: /
+    controller: App\Controller\WarehouseStockController::index
+
+warehouse_stock_show:
+    path:     /{id}/detalle
+    controller: App\Controller\WarehouseStockController::show
+    methods:  [GET, POST]
+
+warehouse_stock_delete:
+    path:     /{id}/borrar
+    controller: App\Controller\WarehouseStockController::delete
+    methods:  [GET, POST]
+
+warehouse_stock_lot_show:
+    path:     /{id}/detalle/{lote}/lote
+    controller: App\Controller\WarehouseStockController::showLot
+    methods:  [GET, POST]

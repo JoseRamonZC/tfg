@@ -1,0 +1,13 @@
+service_areas_index:
+    path: /
+    controller: App\Controller\ServiceAreaController::index
+
+service_areas_show:
+    path:     /{id}/detalle
+    controller: App\Controller\ServiceAreaController::show
+    methods:  [GET, POST]
+
+service_areas_delete:
+    path:     /{id}/borrar
+    controller: App\Controller\ServiceAreaController::delete
+    methods:  [GET, POST]

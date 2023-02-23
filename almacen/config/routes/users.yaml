@@ -1,0 +1,13 @@
+users_index:
+    path: /
+    controller: App\Controller\UserController::index
+
+users_show:
+    path:     /{id}/detalle
+    controller: App\Controller\UserController::show
+    methods:  [GET, POST]
+
+users_delete:
+    path:     /{id}/borrar
+    controller: App\Controller\UserController::delete
+    methods:  [GET, POST]

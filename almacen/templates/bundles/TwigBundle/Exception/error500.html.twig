@@ -1,0 +1,29 @@
+{% block title %}Error{% endblock %}
+{% block body %}
+    <div class="app-toolbar align-items-center justify-content-between">
+        <div class="d-flex flex-grow-1 flex-stack flex-wrap gap-2 mb-n10" id="kt_toolbar">
+            <div class="d-flex flex-column align-items-start me-3 gap-2">
+                <h1 class="d-flex text-dark fw-bolder m-0 fs-3">Error</h1>
+                <ul class="breadcrumb breadcrumb-dot fw-bold text-gray-600 fs-7">
+                    <li class="breadcrumb-item text-gray-600">
+                        <a href="{{ path('app_index') }}" class="text-gray-600 text-hover-primary">Inicio</a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-600">Error</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-content flex-column-fluid" id="kt_app_content">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title d-flex align-items-center">
+                    <h3>Error</h3>
+                </div>
+            </div>
+            <div class="card-body">
+                Hubo un error en el proceso, se ha enviado un email al administración con el error.
+            </div>
+        </div>
+    </div>
+{% endblock %}

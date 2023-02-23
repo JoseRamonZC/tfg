@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <title>SACYR Inventario | {% block title %}{% endblock %}</title>
+        <meta name="description" content="SACYR Inventario">
+        <meta name="viewport" content="width=device-width,initial-scale=1"> 
+        <link rel="shortcut icon" href="{{ asset('imagenes/fav.png') }}" />
+
+        <!--begin::Fonts-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+        <!--end::Fonts-->
+        <!--begin::Page Vendor Stylesheets(used by this page)-->
+        <link href="{{ asset('metronic8/plugins/custom/fullcalendar/fullcalendar.bundle.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('metronic8/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet" type="text/css" />
+        <!--end::Page Vendor Stylesheets-->
+        <!--begin::Global Stylesheets Bundle(used by all pages)-->
+        <link href="{{ asset('metronic8/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('metronic8/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+
+        <link href="{{ asset('styles/general.css') }}" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body id="kt_body" data-kt-app-header-stacked="true" class="app-default">
+        <!--begin::Root-->
+        <div class="d-flex flex-column flex-root" id="kt_app_root">
+            <!--begin::Page-->
+            <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
+
+                {{ render(controller('App\\Controller\\DefaultController::header')) }}
+
+                <!--begin::Wrapper-->
+                <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
+                    <!--begin::Wrapper container-->
+                    <div class="app-container container-xxl d-flex flex-row flex-column-fluid">
+                        <!--begin::Main-->
+                        <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
+                            <!--begin::Content wrapper-->
+                            <div class="d-flex flex-column flex-column-fluid">
+                                {% if excepcion is defined %}
+                                    {% if excepcion == 2 %}
+                                        <div class="alert alert-danger mt-10" role="alert">
+                                            <strong>{{ codigo }}</strong> {{ mensaje }}
+                                        </div>
+                                    {% elseif excepcion == 1 %}
+                                        <div class="alert alert-success mt-10" role="alert">
+                                            <strong>{{ codigo }}</strong> {{ mensaje }}
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+
+                                {% block body %}{% endblock %}
+                            </div>
+                            <!--end::Content wrapper-->
+                            <!--begin::Footer-->
+                            <div class="app-footer align-items-center justify-content-between">
+                                <!--begin::Copyright-->
+                                <div class="text-dark order-2 order-md-1">
+                                    SACYR {{ 'now' | date('Y') }}
+                                </div>
+                                <!--end::Copyright-->
+                            </div>
+                            <!--end::Footer-->
+                        </div>
+                        <!--end:::Main-->
+                    </div>
+                    <!--end::Wrapper container-->
+                </div>
+                <!--end::Wrapper-->
+            </div>
+            <!--end::Page-->
+        </div>
+
+        <!--begin::Global Javascript Bundle(used by all pages)-->
+        <script src="{{ asset('metronic8/plugins/global/plugins.bundle.js') }}"></script>
+        <script src="{{ asset('metronic8/js/scripts.bundle.js') }}"></script>
+        <!--end::Global Javascript Bundle-->
+        <!--begin::Page Vendors Javascript(used by this page)-->
+        <script src="{{ asset('metronic8/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
+        <script src="{{ asset('metronic8/plugins/custom/datatables/datatables.bundle.js') }}"></script>
+        <!--end::Page Vendors Javascript-->
+        <!--begin::Page Custom Javascript(used by this page)-->
+        <script src="{{ asset('metronic8/js/widgets.bundle.js') }}"></script>
+        <script src="{{ asset('metronic8/js/custom/widgets.js') }}"></script>
+        <script src="{{ asset('metronic8/js/custom/apps/chat/chat.js') }}"></script>
+        <script src="{{ asset('metronic8/js/custom/intro.js') }}"></script>
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+        <script src="{{ asset('javascript/general.js') }}"></script>
+        {% block js %}
+        {% endblock %}
+    </body>
+</html>
+

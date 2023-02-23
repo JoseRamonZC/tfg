@@ -1,0 +1,387 @@
+{% extends 'base.html.twig' %}
+{% block title %}Detalle del almacén{% endblock %}
+{% block body %}
+    <div class="app-toolbar align-items-center justify-content-between">
+        <div class="d-flex flex-grow-1 flex-stack flex-wrap gap-2 mb-n10" id="kt_toolbar">
+            <div class="d-flex flex-column align-items-start me-3 gap-2">
+                <h1 class="d-flex text-dark fw-bolder m-0 fs-3">Detalle del almacén "{{ almacen.nombre }}"</h1>
+                <ul class="breadcrumb breadcrumb-dot fw-bold text-gray-600 fs-7">
+                    <li class="breadcrumb-item text-gray-600">
+                        <a href="{{ path('app_index') }}" class="text-gray-600 text-hover-primary">Inicio</a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-600">
+                        <a href="{{ path('warehouses_index') }}" class="text-gray-600 text-hover-primary">Almacenes</a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-600">Detalle del almacén</li>
+                </ul>
+            </div>
+            <div class="d-flex align-items-center py-2">
+                <a href="{{ path('warehouses_index') }}" class="btn btn-sm btn-primary" >
+                    Volver al listado de almacenes</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-content flex-column-fluid" id="kt_app_content">
+        <div class="mb-5 hover-scroll-x">
+            <div class="d-grid">
+                <ul class="nav nav-tabs flex-nowrap text-nowrap">
+                    <li class="nav-item">
+                        <a class="nav-link w-100 active btn btn-flex btn-active-light-sacyr btn-color-gray-600" data-bs-toggle="tab" href="#kt_tab_almacen">
+                            <i class="las la-warehouse fs-2x"></i> Detalle del almacén
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link w-100 btn btn-flex btn-active-light-sacyr btn-color-gray-600" data-bs-toggle="tab" href="#kt_tab_stocks">
+                            <i class="las la-boxes fs-2x"></i> Stock
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link w-100 btn btn-flex btn-active-light-sacyr btn-color-gray-600" data-bs-toggle="tab" href="#kt_tab_importaciones">
+                            <i class="las la-file-invoice fs-2x"></i> Recepción de pedidos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link w-100 btn btn-flex btn-active-light-sacyr btn-color-gray-600" data-bs-toggle="tab" href="#kt_tab_traslados">
+                            <i class="las la-truck-moving fs-2x"></i> Traslados
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link w-100 btn btn-flex btn-active-light-sacyr btn-color-gray-600" data-bs-toggle="tab" href="#kt_tab_asignaciones">
+                            <i class="las la-dolly fs-2x"></i> Asignación de materiales
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="kt_tab_almacen" role="tabpanel">
+                <div class="card">
+                    <form action="#" method="post" enctype='multipart/form-data'>
+                        <div class="card-header">
+                            <div class="card-title d-flex align-items-center">
+                                <h3>Almacén</h3>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="almacen" class="form-label">Almacén</label>
+                                <input type="text" name="almacen" value="{{ almacen.nombre }}" class="form-control" id="almacen" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Guardar modificación</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="kt_tab_stocks" role="tabpanel">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title d-flex align-items-center">
+                            <h3>Stock</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-rounded table-striped table-row-bordered border gy-7 gs-7">
+                                <thead>
+                                    <tr>
+                                        <th>FOTO</th>
+                                        <th>NOMBRE</th>
+                                        <th>ID</th>
+                                        <th>CÓDIGO</th>
+                                        <th>REFERENCIA</th>
+                                        <th>CÓDIGO DE BARRA</th>
+                                        <th>CATEGORÍA</th>
+                                        <th width="50px">CANTIDAD</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for objeto in inventario %}
+                                        <tr>
+                                            <td>
+                                                {% if objeto.producto.foto %}
+                                                    <img width="100px" src="{{ path('products_photo',{'id':objeto.id}) }}" />
+                                                {% else %}
+                                                    <img width="100px" src="{{ asset('imagenes/noimagen.png') }}" />
+                                                {% endif %}
+                                            </td>
+                                            <td>{{ objeto.producto.nombre }}</td>
+                                            <td>{{ objeto.producto.id }}</td>
+                                            <td>{{ objeto.producto.codigo }}</td>
+                                            <td>{{ objeto.producto.referencia }}</td>
+                                            <td>{{ objeto.producto.codigoBarra }}</td>
+                                            <td>
+                                                {{ objeto.producto.categoria }}<br />
+                                                {{ objeto.producto.subcategoria }}
+                                            </td>
+                                            <td class="text-right align-middle ">
+                                                {% if objeto.cantidad <= objeto.umbral %}
+                                                    <i class="las la-exclamation-triangle text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Stock por debajo del umbral"></i>
+                                                {% endif %}
+                                                <span data-bs-toggle="tooltip" data-bs-placement="top" title="Umbral del producto: {{ objeto.umbral }}">{{ objeto.cantidad }}</span>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="kt_tab_importaciones" role="tabpanel">
+                <form action="" method="get">
+                    <div class="card mb-7">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center row">
+                                <div class="col-12 col-lg-3 col-md-4 position-relative">
+                                    <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                        <span>Tipo de fecha</span>
+                                    </label>
+                                    <select name="tipoFecha" class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Tipo de fecha">
+                                        <option value="fechaCreado" >Registro</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-lg-3 col-md-4 position-relative">
+                                    <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                        <span>Desde</span>
+                                    </label>
+                                    <input type="text" value="{{ desde | date('d-m-Y') }}" class="form-control form-control-lg form-control-solid" id="kt_flatpickr" name="desde" />
+                                </div>
+                                <div class="col-12 col-lg-3 col-md-4 position-relative">
+                                    <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                        <span>Hasta</span>
+                                    </label>
+                                    <input type="text" value="{{ hasta | date('d-m-Y') }}" class="form-control form-control-lg form-control-solid" id="kt_flatpickr" name="hasta" />
+                                </div>
+                                <div class="col-3">
+                                    <div class="d-flex align-items-center">
+                                        <button type="submit" class="btn btn-primary me-5">Buscar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title d-flex align-items-center">
+                            <h3>Recepción de pedidos</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-rounded table-striped table-row-bordered border gy-7 gs-7">
+                                <thead>
+                                    <tr>
+                                        <th>PEDIDO</th>
+                                        <th>PRODUCTOS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for objeto in importaciones %}
+                                        <tr>
+                                            <td>
+                                                <b>Factura:</b> {{ objeto.factura }}<br />
+                                                <b>Albarán:</b> {{ objeto.albaran }}<br />
+                                                <b>Fecha:</b> {{ objeto.fecha | date('d-m-Y') }}<br />
+                                                <b>Proveedor:</b> {{ objeto.proveedor ? objeto.proveedor.nombre }}{{ objeto.proveedor ? " - "~objeto.proveedor.direccion }}
+                                            </td>
+                                            <td>
+                                                <table class="table table-hover table-rounded table-striped table-row-bordered border gy-7 gs-7">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>PRODUCTO</th>
+                                                            <th>LOTE</th>
+                                                            <th>CANTIDAD</th>
+                                                            <th class="text-right">PRECIO</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {% set totalPrecio = 0 %}
+                                                        {% for producto in objeto.lotes %}
+                                                            <tr>
+                                                                <td>{{ producto.lote.producto.producto }}</td>
+                                                                <td>{{ producto.lote }}</td>
+                                                                <td>{{ producto.cantidad }}</td>
+                                                                <td class="text-right">{{ producto.precio | number_format(2,',','.') }} €/ud ({{ (producto.precio*producto.cantidad) | number_format(2,',','.') }} €)</td>
+                                                                {% set totalPrecio = totalPrecio+producto.precio*producto.cantidad %}
+                                                            </tr>
+                                                        {% endfor %}
+                                                        <tr>
+                                                            <td class="text-right" colspan="5"><b>Total: {{ totalPrecio | number_format(2,',','.') }} €</b></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table> 
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="kt_tab_traslados" role="tabpanel">
+                <form action="" method="get">
+                    <div class="card mb-7">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center row">
+                                <div class="col-12 col-lg-3 col-md-4 position-relative">
+                                    <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                        <span>Tipo de fecha</span>
+                                    </label>
+                                    <select name="tipoFecha" class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Tipo de fecha">
+                                        <option value="fechaCreado" >Registro</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-lg-3 col-md-4 position-relative">
+                                    <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                        <span>Desde</span>
+                                    </label>
+                                    <input type="text" value="{{ desde | date('d-m-Y') }}" class="form-control form-control-lg form-control-solid" id="kt_flatpickr" name="desde" />
+                                </div>
+                                <div class="col-12 col-lg-3 col-md-4 position-relative">
+                                    <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                        <span>Hasta</span>
+                                    </label>
+                                    <input type="text" value="{{ hasta | date('d-m-Y') }}" class="form-control form-control-lg form-control-solid" id="kt_flatpickr" name="hasta" />
+                                </div>
+                                <div class="col-3">
+                                    <div class="d-flex align-items-center">
+                                        <button type="submit" class="btn btn-primary me-5">Buscar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title d-flex align-items-center">
+                            <h3>Traslados</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-rounded table-striped table-row-bordered border gy-7 gs-7">
+                                <thead>
+                                    <tr>
+                                        <th>ALMACÉN</th>
+                                        <th>FECHA</th>
+                                        <th>PRODUCTOS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for objeto in traslados %}
+                                        <tr>
+                                            <td>
+                                                {{ objeto.almacenA }} -> {{ objeto.almacenB }}
+                                                {% if objeto.observaciones %}{{ objeto.observaciones }}{% endif %}
+                                            </td>
+                                            <td>{{ objeto.fecha | date('d-m-Y') }}</td>
+                                            <td>
+                                                <table class="table table-hover table-rounded table-striped table-row-bordered border gy-7 gs-7">
+                                                    <tbody>
+                                                        {% for producto in objeto.lotes %}
+                                                            <tr>
+                                                                <td>{{ producto.lote.producto.producto }}</td>
+                                                                <td>{{ producto.cantidad }}</td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table> 
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="kt_tab_asignaciones" role="tabpanel">
+                <form action="" method="get">
+                    <div class="card mb-7">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center row">
+                                <div class="col-12 col-lg-3 col-md-4 position-relative">
+                                    <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                        <span>Tipo de fecha</span>
+                                    </label>
+                                    <select name="tipoFecha" class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Tipo de fecha">
+                                        <option value="fechaCreado" >Registro</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-lg-3 col-md-4 position-relative">
+                                    <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                        <span>Desde</span>
+                                    </label>
+                                    <input type="text" value="{{ desde | date('d-m-Y') }}" class="form-control form-control-lg form-control-solid" id="kt_flatpickr" name="desde" />
+                                </div>
+                                <div class="col-12 col-lg-3 col-md-4 position-relative">
+                                    <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                        <span>Hasta</span>
+                                    </label>
+                                    <input type="text" value="{{ hasta | date('d-m-Y') }}" class="form-control form-control-lg form-control-solid" id="kt_flatpickr" name="hasta" />
+                                </div>
+                                <div class="col-3">
+                                    <div class="d-flex align-items-center">
+                                        <button type="submit" class="btn btn-primary me-5">Buscar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title d-flex align-items-center">
+                            <h3>Asignación de materiales</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-rounded table-striped table-row-bordered border gy-7 gs-7">
+                                <thead>
+                                    <tr>
+                                        <th>ÁREA DE SERVICIO</th>
+                                        <th>FECHA</th>
+                                        <th>ASIGNACIÓN</th>
+                                        <th>PRODUCTOS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for objeto in asignaciones %}
+                                        <tr>
+                                            <td>{% if objeto.terceros %}{{ objeto.terceros }}{% else %}{{ objeto.areaServicio }}{% endif %}</td>
+                                            <td>{{ objeto.fecha | date('d-m-Y') }}</td>
+                                            <td>
+                                                Encargado: {{ objeto.encargado }}<br />
+                                                Orden de trabajo: {{ objeto.ordenTrabajo }}<br />
+                                                Observaciones: {{ objeto.observaciones }}
+                                            </td>
+                                            <td>
+                                                <table class="table table-hover table-rounded table-striped table-row-bordered border gy-7 gs-7">
+                                                    <tbody>
+                                                        {% for producto in objeto.lotes %}
+                                                            <tr>
+                                                                <td>{{ producto.lote.producto.producto }}</td>
+                                                                <td>{{ producto.cantidad }}</td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table> 
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% apply inline_css(source('@estilos/email.css')) %}
+    <h1>Hola</h1>
+    <p>
+        Se te ha enviado un email de prueba
+    </p>
+    <p><code>{{ email.to[0].address }}</code></p>
+
+    <img src="{{ email.image('@imagenes/logo.png') }}" alt="Emvismesa" id="firma" width="150px">
+{% endapply %}

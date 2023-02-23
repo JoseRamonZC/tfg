@@ -1,0 +1,13 @@
+suppliers_index:
+    path: /
+    controller: App\Controller\SupplierController::index
+
+suppliers_show:
+    path:     /{id}/detalle
+    controller: App\Controller\SupplierController::show
+    methods:  [GET, POST]
+
+suppliers_delete:
+    path:     /{id}/borrar
+    controller: App\Controller\SupplierController::delete
+    methods:  [GET, POST]

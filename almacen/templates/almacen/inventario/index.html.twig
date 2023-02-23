@@ -1,0 +1,151 @@
+{% extends 'base.html.twig' %}
+{% block title %}Stock{% endblock %}
+{% block body %}
+    <div class="app-toolbar align-items-center justify-content-between">
+        <div class="d-flex flex-grow-1 flex-stack flex-wrap gap-2 mb-n10" id="kt_toolbar">
+            <div class="d-flex flex-column align-items-start me-3 gap-2">
+                <h1 class="d-flex text-dark fw-bolder m-0 fs-3">Stock del almacén "{{ almacen.nombre }}"</h1>
+                <ul class="breadcrumb breadcrumb-dot fw-bold text-gray-600 fs-7">
+                    <li class="breadcrumb-item text-gray-600">
+                        <a href="{{ path('app_index') }}" class="text-gray-600 text-hover-primary">Inicio</a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-600">Stock</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-content flex-column-fluid" id="kt_app_content">
+        <form action="" method="get">
+            <div class="card mb-7">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="position-relative w-md-400px me-md-2">
+                            <input type="text" class="form-control form-control-solid ps-10" name="producto" value="{{ producto }}" placeholder="Producto/Código/Referencia/Código de barras" />
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <button type="submit" class="btn btn-primary me-5">Buscar</button>
+                            <a id="kt_horizontal_search_advanced_link" class="btn btn-link" data-bs-toggle="collapse" href="#kt_advanced_search_form">Búsqueda avanzada</a>
+                        </div>
+                    </div>
+                    {% if categoria or cantidad1 or cantidad2 or cantidad1 == "0" or cantidad2 == "0" or id == "0" or id or stock %}
+                        {% set buscadorAvanzado = "show" %}
+                    {% else %}
+                        {% set buscadorAvanzado = "" %}
+                    {% endif %}
+                    <div class="collapse {{ buscadorAvanzado }}" id="kt_advanced_search_form">
+                        <div class="separator separator-dashed mt-9 mb-6"></div>
+                        <div class="row g-8 align-items-center">
+                            <div class="col-3">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span>ID</span>
+                                </label>
+                                <input type="number" min="1" class="form-control form-control-solid ps-10" name="id" value="{{ id }}" placeholder="ID" />
+                            </div>
+                            <div class="col-3">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span>Categoría</span>
+                                </label>
+                                <select name="categoria" class="form-select form-select-solid" data-placeholder="Categoría">
+                                    <option value="">---</option>
+                                    {% for objeto in categorias %}
+                                        <option value="{{ objeto.id }}" {% if objeto.id == categoria %}selected{% endif %}>{{ objeto }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-3">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span>Cantidad desde</span>
+                                </label>
+                                <input type="number" min="0" value="{{ cantidad1 }}" class="form-control form-control-lg form-control-solid" name="cantidad1" />
+                            </div>
+                            <div class="col-3">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span>Cantidad hasta</span>
+                                </label>
+                                <input type="number" min="0" value="{{ cantidad2 }}" class="form-control form-control-lg form-control-solid" name="cantidad2" />
+                            </div>
+                            <div class="col-3">
+                                <div class="form-check form-switch form-switch-sm form-check-custom form-check-solid">
+                                    <input class="form-check-input" type="checkbox" {% if stock == 1 %}checked{% endif %} name="stock" value="1" />
+                                    <label class="form-check-label">Bajo en stock según umbral</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-rounded table-striped table-row-bordered border gy-7 gs-7">
+                        <thead>
+                            <tr>
+                                <th>FOTO</th>
+                                <th>NOMBRE</th>
+                                <th>ID</th>
+                                <th>CÓDIGO</th>
+                                <th>REFERENCIA</th>
+                                <th>CÓDIGO DE BARRA</th>
+                                <th>CATEGORÍA</th>
+                                <th width="50px">CANTIDAD</th>
+                                <th width="50px">DETALLE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for objeto in inventario %}
+                                <tr>
+                                    <td>
+                                        {% if objeto.producto.foto %}
+                                            <img width="100px" src="{{ path('warehouse_products_photo',{'almacen':almacen.id,'id':objeto.producto.id}) }}" />
+                                        {% else %}
+                                            <img width="100px" src="{{ asset('imagenes/noimagen.png') }}" />
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ objeto.producto.nombre }}</td>
+                                    <td>{{ objeto.producto.id }}</td>
+                                    <td>{{ objeto.producto.codigo }}</td>
+                                    <td>{{ objeto.producto.referencia }}</td>
+                                    <td>{{ objeto.producto.codigoBarra }}</td>
+                                    <td>
+                                        {{ objeto.producto.categoria }}<br />
+                                        {{ objeto.producto.subcategoria }}
+                                    </td>
+                                    <td class="text-right align-middle ">
+                                        {% if objeto.cantidad <= objeto.umbral %}
+                                            <i class="las la-exclamation-triangle text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Stock por debajo del umbral"></i>
+                                        {% endif %}
+                                        <span data-bs-toggle="tooltip" data-bs-placement="top" title="Umbral del producto: {{ objeto.umbral }}">{{ objeto.cantidad }}</span>
+                                    </td>
+                                    <td class="text-center align-middle">
+                                        {% set caducado = 0 %}
+                                        {% for lote in objeto.lotes %}
+                                            {% if lote.fechaCaducidad <= 'now'|date_modify("+0 day") and lote.cantidad > 0 %}
+                                                {% set caducado = 1 %}
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% if caducado == 1 %}
+                                            <a class="btn btn-warning btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Este producto contiene lotes caducados." href="{{ path('warehouse_stock_show',{'almacen':almacen.id,'id':objeto.id}) }}">
+                                                <i class="las la-exclamation-triangle fs-2x"></i>
+                                            </a>
+                                        {% else %}
+                                            <a class="btn btn-primary btn-icon" href="{{ path('warehouse_stock_show',{'almacen':almacen.id,'id':objeto.id}) }}">
+                                                <i class="las la-eye fs-2x"></i>
+                                            </a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table> 
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="navigation">
+                    {{ knp_pagination_render(inventario) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,46 @@
+warehouse_import_index:
+    path: /
+    controller: App\Controller\WarehouseImportController::index
+
+warehouse_import_show:
+    path:     /{id}/detalle
+    controller: App\Controller\WarehouseImportController::show
+    methods:  [GET, POST]
+
+warehouse_import_lot_show:
+    path:     /{id}/detalle/{importacionLote}/lote
+    controller: App\Controller\WarehouseImportController::showLot
+    methods:  [GET, POST]
+
+warehouse_import_delete:
+    path:     /{id}/borrar
+    controller: App\Controller\WarehouseImportController::delete
+    methods:  [GET, POST]
+
+products_new:
+    path:     /nuevo-producto
+    controller: App\Controller\WarehouseImportController::newProduct
+    methods:  [GET, POST]
+    options:
+        expose: true
+
+suppliers_new:
+    path:     /nuevo-proveedor
+    controller: App\Controller\WarehouseImportController::newSupplier
+    methods:  [GET, POST]
+    options:
+        expose: true
+
+products_search:
+    path:     /buscar-producto
+    controller: App\Controller\WarehouseImportController::searchProduct
+    methods:  [GET, POST]
+    options:
+        expose: true
+
+products_add:
+    path:     /anadir-producto
+    controller: App\Controller\WarehouseImportController::addProduct
+    methods:  [GET, POST]
+    options:
+        expose: true

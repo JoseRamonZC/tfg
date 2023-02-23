@@ -1,0 +1,13 @@
+h1 {
+    color: #333;
+    border: 1px solid blue;
+    border-radius: 10px;
+    text-align: center;
+    padding: 10px;
+}
+
+#firma {
+    border: 1px solid blue;
+    border-radius: 10px;
+    padding: 5px;
+}

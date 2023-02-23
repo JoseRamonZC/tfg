@@ -1,0 +1,32 @@
+warehouse_transfer_index:
+    path: /
+    controller: App\Controller\WarehouseTransferController::index
+
+warehouse_transfer_show:
+    path:     /{id}/detalle
+    controller: App\Controller\WarehouseTransferController::show
+    methods:  [GET, POST]
+
+warehouse_transfer_lot_show:
+    path:     /{id}/detalle/{trasladoLote}/lote
+    controller: App\Controller\WarehouseTransferController::showLot
+    methods:  [GET, POST]
+
+warehouse_transfer_delete:
+    path:     /{id}/borrar
+    controller: App\Controller\WarehouseTransferController::delete
+    methods:  [GET, POST]
+
+lots_search:
+    path:     /buscar-lote
+    controller: App\Controller\WarehouseTransferController::searchLot
+    methods:  [GET, POST]
+    options:
+        expose: true
+
+lots_add:
+    path:     /anadir-lote
+    controller: App\Controller\WarehouseTransferController::addLot
+    methods:  [GET, POST]
+    options:
+        expose: true

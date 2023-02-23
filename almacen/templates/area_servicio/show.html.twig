@@ -1,0 +1,186 @@
+{% extends 'base.html.twig' %}
+{% block title %}Detalle del área de servicio{% endblock %}
+{% block body %}
+    <div class="app-toolbar align-items-center justify-content-between">
+        <div class="d-flex flex-grow-1 flex-stack flex-wrap gap-2 mb-n10" id="kt_toolbar">
+            <div class="d-flex flex-column align-items-start me-3 gap-2">
+                <h1 class="d-flex text-dark fw-bolder m-0 fs-3">Detalle del área de servicio</h1>
+                <ul class="breadcrumb breadcrumb-dot fw-bold text-gray-600 fs-7">
+                    <li class="breadcrumb-item text-gray-600">
+                        <a href="{{ path('app_index') }}" class="text-gray-600 text-hover-primary">Inicio</a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-600">
+                        <a href="{{ path('service_areas_index') }}" class="text-gray-600 text-hover-primary">Áreas de servicio</a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-600">Detalle del área de servicio</li>
+                </ul>
+            </div>
+            <div class="d-flex align-items-center py-2">
+                <a href="{{ path('service_areas_index') }}" class="btn btn-sm btn-primary" >
+                    Volver al listado de áreas de servicio</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-content flex-column-fluid" id="kt_app_content">
+        <div class="mb-5 hover-scroll-x">
+            <div class="d-grid">
+                <ul class="nav nav-tabs flex-nowrap text-nowrap">
+                    <li class="nav-item">
+                        <a class="nav-link w-100 active btn btn-flex btn-active-light-sacyr btn-color-gray-600" data-bs-toggle="tab" href="#kt_tab_area">
+                            <i class="las la-store fs-2x"></i> Detalle del área de servicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link w-100 btn btn-flex btn-active-light-sacyr btn-color-gray-600" data-bs-toggle="tab" href="#kt_tab_asignaciones">
+                            <i class="las la-dolly fs-2x"></i> Asignación de materiales
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="kt_tab_area" role="tabpanel">
+                <div class="card">
+                    <form action="" method="post">
+                        <div class="card-header">
+                            <div class="card-title d-flex align-items-center">
+                                <h3>Área de servicio</h3>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label for="areaServicio" class="form-label">Área de servicio</label>
+                                <input type="text" name="areaServicio" value="{{ areaServicio.nombre }}" class="form-control" id="areaServicio" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Guardar modificación</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="tab-pane fade show" id="kt_tab_asignaciones" role="tabpanel">
+                <form action="" method="get">
+                    <div class="card mb-7">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center row">
+                                <div class="col-12 col-lg-3 col-md-4 position-relative">
+                                    <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                        <span>Tipo de fecha</span>
+                                    </label>
+                                    <select name="tipoFecha" class="form-select form-select-solid" data-control="select2" data-hide-search="true" data-placeholder="Tipo de fecha">
+                                        <option value="fecha" {% if tipoFecha == "fecha" %}selected{% endif %}>Asignación</option>
+                                        <option value="fechaCreado" {% if tipoFecha == "fechaCreado" %}selected{% endif %}>Registro</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-lg-3 col-md-4 position-relative">
+                                    <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                        <span>Desde</span>
+                                    </label>
+                                    <input type="text" value="{{ desde | date('d-m-Y') }}" class="form-control form-control-lg form-control-solid" id="kt_flatpickr" name="desde" />
+                                </div>
+                                <div class="col-12 col-lg-3 col-md-4 position-relative">
+                                    <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                        <span>Hasta</span>
+                                    </label>
+                                    <input type="text" value="{{ hasta | date('d-m-Y') }}" class="form-control form-control-lg form-control-solid" id="kt_flatpickr" name="hasta" />
+                                </div>
+                                <div class="col-3">
+                                    <div class="d-flex align-items-center">
+                                        <button type="submit" class="btn btn-primary me-5">Buscar</button>
+                                        <a id="kt_horizontal_search_advanced_link" class="btn btn-link" data-bs-toggle="collapse" href="#kt_advanced_search_form">Búsqueda avanzada</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% if categoria or producto or id == "0" or id %}
+                                {% set buscadorAvanzado = "show" %}
+                            {% else %}
+                                {% set buscadorAvanzado = "" %}
+                            {% endif %}
+                            <div class="collapse {{ buscadorAvanzado }}" id="kt_advanced_search_form">
+                                <div class="separator separator-dashed mt-9 mb-6"></div>
+                                <div class="row g-8">
+                                    <div class="col-3">
+                                        <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                            <span>Producto</span>
+                                        </label>
+                                        <input type="text" class="form-control form-control-solid ps-10" name="producto" value="{{ producto }}" placeholder="Producto/Código/Referencia/Código de barras" />
+                                    </div>
+                                    <div class="col-3">
+                                        <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                            <span>ID producto</span>
+                                        </label>
+                                        <input type="number" min="1" class="form-control form-control-solid ps-10" name="id" value="{{ id }}" placeholder="ID" />
+                                    </div>
+                                    <div class="col-3">
+                                        <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                            <span>Categoría</span>
+                                        </label>
+                                        <select name="categoria" class="form-select form-select-solid" data-placeholder="Categoría">
+                                            <option value="">---</option>
+                                            {% for objeto in categorias %}
+                                                <option value="{{ objeto.id }}" {% if objeto.id == categoria %}selected{% endif %}>{{ objeto }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title d-flex align-items-center">
+                            <h3>Asignación de materiales</h3>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-rounded table-striped table-row-bordered border gy-7 gs-7">
+                                <thead>
+                                    <tr>
+                                        <th>ALMACEN</th>
+                                        <th>FECHA</th>
+                                        <th>ASIGNACIÓN</th>
+                                        <th>PRODUCTOS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for objeto in asignaciones %}
+                                        <tr>
+                                            <td>{{ objeto.almacen }}</td>
+                                            <td>{{ objeto.fecha | date('d-m-Y') }}</td>
+                                            <td>
+                                                Encargado: {{ objeto.encargado }}<br />
+                                                Orden de trabajo: {{ objeto.ordenTrabajo }}<br />
+                                                Observaciones: {{ objeto.observaciones }}
+                                            </td>
+                                            <td>
+                                                <table class="table table-hover table-rounded table-striped table-row-bordered border gy-7 gs-7">
+                                                    <tbody>
+                                                        {% for producto in objeto.lotes %}
+                                                            <tr>
+                                                                <td>{{ producto.lote.producto.producto }}</td>
+                                                                <td>{{ producto.cantidad }}</td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table> 
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table> 
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="navigation">
+                            {{ knp_pagination_render(asignaciones) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

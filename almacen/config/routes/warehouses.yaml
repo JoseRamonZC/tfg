@@ -1,0 +1,13 @@
+warehouses_index:
+    path: /
+    controller: App\Controller\WarehouseController::index
+
+warehouses_show:
+    path:     /{id}/detalle
+    controller: App\Controller\WarehouseController::show
+    methods:  [GET, POST]
+
+warehouses_delete:
+    path:     /{id}/borrar
+    controller: App\Controller\WarehouseController::delete
+    methods:  [GET, POST]

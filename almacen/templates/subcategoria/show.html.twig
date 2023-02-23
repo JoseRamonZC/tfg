@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block title %}Detalle de la subcategoría{% endblock %}
+{% block body %}
+    <div class="app-toolbar align-items-center justify-content-between">
+        <div class="d-flex flex-grow-1 flex-stack flex-wrap gap-2 mb-n10" id="kt_toolbar">
+            <div class="d-flex flex-column align-items-start me-3 gap-2">
+                <h1 class="d-flex text-dark fw-bolder m-0 fs-3">Detalle de la subcategoría de la categoría "{{ categoria.nombre }}"</h1>
+                <ul class="breadcrumb breadcrumb-dot fw-bold text-gray-600 fs-7">
+                    <li class="breadcrumb-item text-gray-600">
+                        <a href="{{ path('app_index') }}" class="text-gray-600 text-hover-primary">Inicio</a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-600">
+                        <a href="{{ path('categories_index') }}" class="text-gray-600 text-hover-primary">Categorías</a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-600">
+                        <a href="{{ path('subcategories_index',{'id':categoria.id}) }}" class="text-gray-600 text-hover-primary">Subcategorías</a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-600">Detalle de la subcategoría</li>
+                </ul>
+            </div>
+            <div class="d-flex align-items-center py-2">
+                <a href="{{ path('subcategories_index',{'id':categoria.id}) }}" class="btn btn-sm btn-primary" >
+                    Volver al listado de subcategorías</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-content flex-column-fluid" id="kt_app_content">
+        <div class="card">
+            <form action="" method="post">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="subcategoria" class="form-label">Subcategoría</label>
+                        <input type="text" name="subcategoria" value="{{ subcategoria.nombre }}" class="form-control" id="subcategoria" autocomplete="off">
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Guardar modificación</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

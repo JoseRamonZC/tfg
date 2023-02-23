@@ -1,0 +1,67 @@
+doctrine:
+    dbal:
+        url: '%env(resolve:DATABASE_URL)%'
+
+        # IMPORTANT: You MUST configure your server version,
+        # either here or in the DATABASE_URL env var (see .env file)
+        #server_version: '13'
+    orm:
+        auto_generate_proxy_classes: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+        auto_mapping: true
+        dql:
+            datetime_functions:            
+                year: DoctrineExtensions\Query\Mysql\Year    
+                month: DoctrineExtensions\Query\Mysql\Month
+                week: DoctrineExtensions\Query\Mysql\Week
+                day: DoctrineExtensions\Query\Mysql\Day
+                date_format: DoctrineExtensions\Query\Mysql\DateFormat
+                minute: DoctrineExtensions\Query\Mysql\Minute
+                hour: DoctrineExtensions\Query\Mysql\Hour
+                date: DoctrineExtensions\Query\Mysql\Date
+                UNIX_TIMESTAMP: DoctrineExtensions\Query\Mysql\UnixTimestamp
+            string_functions:
+                group_concat: DoctrineExtensions\Query\Mysql\GroupConcat
+                cast: DoctrineExtensions\Query\Mysql\Cast
+                JSON_EXTRACT: Scienta\DoctrineJsonFunctions\Query\AST\Functions\Mysql\JsonExtract
+        mappings:
+            App:
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Entity'
+                prefix: 'App\Entity'
+                alias: App
+            loggable:
+                type: annotation
+                alias: Gedmo
+                prefix: Gedmo\Loggable\Entity
+                dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/src/Loggable/Entity"
+            tree:
+                type: annotation
+                alias: Gedmo
+                prefix: Gedmo\Tree\Entity
+                dir: "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/src/Tree/Entity"
+
+when@test:
+    doctrine:
+        dbal:
+            # "TEST_TOKEN" is typically set by ParaTest
+            dbname_suffix: '_test%env(default::TEST_TOKEN)%'
+
+when@prod:
+    doctrine:
+        orm:
+            auto_generate_proxy_classes: false
+            query_cache_driver:
+                type: pool
+                pool: doctrine.system_cache_pool
+            result_cache_driver:
+                type: pool
+                pool: doctrine.result_cache_pool
+
+    framework:
+        cache:
+            pools:
+                doctrine.result_cache_pool:
+                    adapter: cache.app
+                doctrine.system_cache_pool:
+                    adapter: cache.system

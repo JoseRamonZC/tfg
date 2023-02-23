@@ -1,0 +1,145 @@
+{% extends 'base.html.twig' %}
+{% block title %}Detalle de la stock{% endblock %}
+{% block body %}
+    <div class="app-toolbar align-items-center justify-content-between">
+        <div class="d-flex flex-grow-1 flex-stack flex-wrap gap-2 mb-n10" id="kt_toolbar">
+            <div class="d-flex flex-column align-items-start me-3 gap-2">
+                <h1 class="d-flex text-dark fw-bolder m-0 fs-3">Detalle del producto {{ almacenProducto.producto.nombre }}</h1>
+                <ul class="breadcrumb breadcrumb-dot fw-bold text-gray-600 fs-7">
+                    <li class="breadcrumb-item text-gray-600">
+                        <a href="{{ path('app_index') }}" class="text-gray-600 text-hover-primary">Inicio</a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-600">
+                        <a href="{{ path('warehouse_stock_index',{'almacen':almacen.id}) }}" class="text-gray-600 text-hover-primary">Stock</a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-600">Detalle del producto</li>
+                </ul>
+            </div>
+            <div class="d-flex align-items-center py-2">
+                <a href="{{ path('warehouse_stock_index',{'almacen':almacen.id}) }}" class="btn btn-sm btn-primary" >
+                    Volver al stock</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-content flex-column-fluid" id="kt_app_content">
+        <div class="card">
+            <form action="#" method="post" enctype='multipart/form-data'>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="mb-3 col-12 col-lg-6">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" name="nombre" value="{{ almacenProducto.producto.nombre }}" required class="form-control" id="producto" autocomplete="off">
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <label for="codigo" class="form-label">ID</label>
+                            <input type="text" disabled value="{{ almacenProducto.producto.id }}" class="form-control" id="codigo" autocomplete="off">
+                        </div>
+                        <div class="mb-3 col-12 col-lg-6">
+                            <label for="codigo" class="form-label">Código</label>
+                            <input type="text" name="codigo" value="{{ almacenProducto.producto.codigo }}" class="form-control" id="codigo" autocomplete="off">
+                        </div>
+                        <div class="mb-3 col-12 col-lg-6">
+                            <label for="referencia" class="form-label">Referencia</label>
+                            <input type="text" name="referencia" value="{{ almacenProducto.producto.referencia }}" class="form-control" id="referencia" autocomplete="off">
+                        </div>
+                        <div class="mb-3 col-12 col-lg-6">
+                            <label for="codigoBarra" class="form-label">Código de barras</label>
+                            <input type="text" name="codigoBarra" value="{{ almacenProducto.producto.codigoBarra }}" class="form-control" id="codigoBarra" autocomplete="off">
+                        </div>
+                        <div class="mb-3 col-12 col-lg-6">
+                            <label for="categoria" class="form-label">Categoría</label>
+                            <select name="categoria" class="form-select form-select-solid" id="categoria" data-kt-select2="true" data-placeholder="Seleccionar">
+                                <option value=" ">---</option>
+                                {% for objeto in categorias %}
+                                    <option {% if objeto == almacenProducto.producto.categoria %}selected{% endif %} value="{{ objeto.id }}">{{ objeto }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-3 col-12 col-lg-6">
+                            <label class="form-label">Subcategoría:</label>
+                            <select name="subcategoria" class="form-control" id="subcategoria">
+                                <option data-categoria="0" value="">---</option>
+                                {% for objeto in subcategorias %}
+                                    <option data-categoria="{{ objeto.categoria.id }}" {% if almacenProducto.producto.subcategoria %}{% if objeto.categoria != almacenProducto.producto.subcategoria.categoria %}hidden{% endif %}{% else %}hidden{% endif %} value="{{ objeto.id }}" {% if objeto == almacenProducto.producto.subcategoria %}selected{% endif %}>{{ objeto.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-3 col-12 col-lg-6">
+                            <label for="descripcion" class="form-label">Descripción</label>
+                            <textarea name="descripcion" class="form-control" autocomplete="off">{{ almacenProducto.producto.descripcion }}</textarea>
+                        </div>   
+                        <div class="mb-3 col-12 col-lg-6">
+                            <label for="cantidad" class="form-label">Cantidad</label>
+                            <input type="number" name="cantidad" value="{{ almacenProducto.cantidad }}" step="any" min="0" required class="form-control" id="cantidad" autocomplete="off">
+                        </div>
+                        <div class="mb-3 col-12 col-lg-6">
+                            <label for="umbral" class="form-label">Umbral</label>
+                            <input type="number" min="0" name="umbral" value="{{ almacenProducto.umbral }}" class="form-control" id="umbral" autocomplete="off">
+                            <div class="alert alert-info mt-3" role="alert">
+                                El umbral es la cantidad mínima del producto que se quiere tener en el almacén. En el momento que el umbral se rebase se le notificará al gestor del almacén.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col-12 col-lg-6">
+                            <label class="form-label">Foto:</label>
+                            <label for="fileUpload" class="file-upload btn btn-primary btn-block">
+                                <i class="fa fa-upload mr-2"></i>Subir foto ...<input name="foto" id="fileUpload" type="file" accept="image/*">
+                            </label>
+                        </div>
+                        {% if almacenProducto.producto.foto %}
+                            <div class="mb-3 col-12 col-lg-6">
+                                <div class="card" style="height: 455px;">
+                                    <div class="card-body align-self-center">
+                                        <div style="padding: 5px; border: gray solid 1px; border-radius: 5px;">
+                                            <img style="width: 100%;max-height: 410px;" src="{{ path('warehouse_products_photo',{'almacen':almacen.id,'id':almacenProducto.producto.id}) }}" />
+                                        </div>                                        
+                                    </div>                                        
+                                </div>
+                            </div>
+                        {% endif %} 
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col-12">
+                            <table class="table table-hover table-rounded table-striped table-row-bordered border gy-7 gs-7">
+                                <thead>
+                                    <tr>
+                                        <th>LOTE</th>
+                                        <th>CANTIDAD</th>
+                                        <th>FECHA CADUCIDAD</th>
+                                        <th width="50px">DETALLE</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for objeto in lotes %}
+                                        <tr>
+                                            <td>{{ objeto.lote }}</td>
+                                            <td>{{ objeto.cantidad }}</td>
+                                            <td class="align-middle">
+                                                {% if objeto.fechaCaducidad %}
+                                                    {% if objeto.fechaCaducidad <= 'now'|date_modify("+0 day") %}
+                                                        <i class="las la-exclamation-triangle text-warning" data-bs-toggle="tooltip" data-bs-placement="top" title="Lote caducado."></i>
+                                                    {% endif %}
+                                                {% endif %}
+                                                {{ objeto.fechaCaducidad ? objeto.fechaCaducidad | date('d-m-Y') }}
+                                            </td>
+                                            <td class="text-center align-middle">
+                                                <a class="btn btn-primary btn-icon" href="{{ path('warehouse_stock_lot_show',{'almacen':almacen.id,'id':almacenProducto.id,'lote':objeto.id}) }}">
+                                                    <i class="las la-eye fs-2x"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table> 
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Guardar modificación</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+products_index:
+    path: /
+    controller: App\Controller\ProductController::index
+
+products_show:
+    path:     /{id}/detalle
+    controller: App\Controller\ProductController::show
+    methods:  [GET, POST]
+
+products_delete:
+    path:     /{id}/borrar
+    controller: App\Controller\ProductController::delete
+    methods:  [GET, POST]
+
+products_photo:
+    path:     /{id}/foto
+    controller: App\Controller\ProductController::photo
+    methods:  [GET, POST]

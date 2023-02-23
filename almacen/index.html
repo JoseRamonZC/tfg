@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="public/css/general.css">
+    <title>Bienvenido</title>
+</head>
+
+<body>
+
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="col-12 bg-white rounded my-3 p-5">
+                <div class="formulario">
+                    <h1 class="text-center"><b>Bienvenido</b></h1><br>
+                    <form action="installPage.php" method="post">
+                        <div class="form-group">
+                            <label for="nombre">Nombre de la base de datos:</label>
+                            <input type="text" class="form-control input-border" id="DB-NAME" placeholder=""
+                                name="DB-NAME">
+                        </div>
+                        <div class="form-group">
+                            <label for="usuario">Usuario de MySQL:</label>
+                            <input type="text" class="form-control input-border" id="DB-USER" placeholder=""
+                                name="DB-USER">
+                        </div>
+                        <div class="form-group">
+                            <label for="contraseña">Contraseña de MySQL:</label>
+                            <input type="text" class="form-control input-border" id="DB-PASSWORD" placeholder=""
+                                name="DB-PASSWORD">
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-10">
+                                <input class="btn btn-primary" type="submit" value="Enviar">
+                                <!-- <button type="submit" class="btn btn-default pull-right input-border boton-enviar">ENVIAR</button> -->
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

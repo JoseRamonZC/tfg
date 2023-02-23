@@ -1,0 +1,241 @@
+{% extends 'base.html.twig' %}
+{% block title %}Productos{% endblock %}
+{% block body %}
+    <div class="app-toolbar align-items-center justify-content-between">
+        <div class="d-flex flex-grow-1 flex-stack flex-wrap gap-2 mb-n10" id="kt_toolbar">
+            <div class="d-flex flex-column align-items-start me-3 gap-2">
+                <h1 class="d-flex text-dark fw-bolder m-0 fs-3">Productos</h1>
+                <ul class="breadcrumb breadcrumb-dot fw-bold text-gray-600 fs-7">
+                    <li class="breadcrumb-item text-gray-600">
+                        <a href="{{ path('app_index') }}" class="text-gray-600 text-hover-primary">Inicio</a>
+                    </li>
+                    <li class="breadcrumb-item text-gray-600">Productos</li>
+                </ul>
+            </div>
+            <div class="align-items-center py-2">
+                <a href="#" class="btn btn-sm btn-primary btn-flex" data-bs-toggle="modal" data-bs-target="#kt_crearProducto" id="kt_toolbar_primary_button">
+                    <span class="svg-icon svg-icon-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="currentColor" />
+                            <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor" />
+                        </svg>
+                    </span>
+                    Añadir producto</a>
+                <a href="#" class="btn btn-sm btn-primary btn-flex" data-bs-toggle="modal" data-bs-target="#kt_crearImportacionArchivo" id="kt_toolbar_primary_button">
+                    <span class="svg-icon svg-icon-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="currentColor" />
+                            <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="currentColor" />
+                        </svg>
+                    </span>
+                    Importar productos</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-content flex-column-fluid" id="kt_app_content">
+
+        <form action="" method="get">
+            <div class="card mb-7">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="position-relative w-md-400px me-md-2">
+                            <input type="text" class="form-control form-control-solid ps-10" name="producto" value="{{ producto }}" placeholder="Producto/Código/Referencia/Código de barras" />
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <button type="submit" class="btn btn-primary me-5">Buscar</button>
+                            <a id="kt_horizontal_search_advanced_link" class="btn btn-link" data-bs-toggle="collapse" href="#kt_advanced_search_form">Búsqueda avanzada</a>
+                        </div>
+                    </div>
+                    {% if categoria or id == "0" or id  %}
+                        {% set buscadorAvanzado = "show" %}
+                    {% else %}
+                        {% set buscadorAvanzado = "" %}
+                    {% endif %}
+                    <div class="collapse {{ buscadorAvanzado }}" id="kt_advanced_search_form">
+                        <div class="separator separator-dashed mt-9 mb-6"></div>
+                        <div class="row g-8 align-items-center">
+                            <div class="col-3">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span>ID</span>
+                                </label>
+                                <input type="number" min="1" class="form-control form-control-solid ps-10" name="id" value="{{ id }}" placeholder="ID" />
+                            </div>
+                            <div class="col-3">
+                                <label class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                    <span>Categoría</span>
+                                </label>
+                                <select name="categoria" class="form-select form-select-solid" data-placeholder="Categoría">
+                                    <option value="">---</option>
+                                    {% for objeto in categorias %}
+                                        <option value="{{ objeto.id }}" {% if objeto.id == categoria %}selected{% endif %}>{{ objeto }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-rounded table-striped table-row-bordered border gy-7 gs-7">
+                        <thead>
+                            <tr>
+                                <th>FOTO</th>
+                                <th>NOMBRE</th>
+                                <th>ID</th>
+                                <th>CÓDIGO</th>
+                                <th>REFERENCIA</th>
+                                <th>CÓDIGO DE BARRA</th>
+                                <th>PRECIO</th>
+                                <th>CATEGORÍA</th>
+                                <th>ALMACENES</th>
+                                <th width="50px">DETALLE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for objeto in productos %}
+                                <tr>
+                                    <td>
+                                        {% if objeto.foto %}
+                                            <img width="100px" src="{{ path('products_photo',{'id':objeto.id}) }}" />
+                                        {% else %}
+                                            <img width="100px" src="{{ asset('imagenes/noimagen.png') }}" />
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ objeto.nombre }}</td>
+                                    <td>{{ objeto.id }}</td>
+                                    <td>{{ objeto.codigo }}</td>
+                                    <td>{{ objeto.referencia }}</td>
+                                    <td>{{ objeto.codigoBarra }}</td>
+                                    <td class="text-right">{{ objeto.precio | number_format(2,',','.') }} €</td>
+                                    <td>
+                                        {{ objeto.categoria }}<br />
+                                        {{ objeto.subcategoria }}
+                                    </td>
+                                    <td>
+                                        {% for almacen in objeto.almacenes %}
+                                            {% if almacen.cantidad > 0 %}
+                                                {{ almacen.almacen }}: {{ almacen.cantidad }}<br />
+                                            {% endif %}
+                                        {% endfor %}
+                                    </td>
+                                    <td class="text-center align-middle">
+                                        <a class="btn btn-primary btn-icon" href="{{ path('products_show',{'id':objeto.id}) }}">
+                                            <i class="las la-eye fs-2x"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table> 
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="navigation">
+                    {{ knp_pagination_render(productos) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="kt_crearProducto" tabindex="-1" aria-labelledby="crearProductoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="#" method="post" enctype='multipart/form-data'>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Añadir nuevo producto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" name="nombre" required class="form-control" id="producto" autocomplete="off">
+                        </div>
+                        <div class="mb-3">
+                            <label for="codigo" class="form-label">Código</label>
+                            <input type="text" name="codigo" class="form-control" id="codigo" autocomplete="off">
+                        </div>
+                        <div class="mb-3">
+                            <label for="referencia" class="form-label">Referencia</label>
+                            <input type="text" name="referencia" class="form-control" id="referencia" autocomplete="off">
+                        </div>
+                        <div class="mb-3">
+                            <label for="codigoBarra" class="form-label">Código de barras</label>
+                            <input type="text" name="codigoBarra" class="form-control" id="codigoBarra" autocomplete="off">
+                        </div>
+                        <div class="mb-3">
+                            <label for="precio" class="form-label">Precio</label>
+                            <input type="number" step="any" min="0" value="0" name="precio" required class="form-control" id="precio" autocomplete="off">
+                        </div>
+                        <div class="mb-3">
+                            <label for="categoria" class="form-label">Categoría</label>
+                            <select name="categoria" class="form-select form-select-solid" id="categoria" select2="categoria" data-kt-select2="true" data-placeholder="Seleccionar">
+                                <option value=" ">---</option>
+                                {% for objeto in categorias %}
+                                    <option value="{{ objeto.id }}">{{ objeto }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Subcategoría:</label>
+                            <select name="subcategoria" class="form-select form-select-solid" id="subcategoria" >
+                                <option data-categoria="0" value="">---</option>
+                                {% for objeto in subcategorias %}
+                                    <option data-categoria="{{ objeto.categoria.id }}" value="{{ objeto.id }}">{{ objeto.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">Descripción</label>
+                            <textarea name="descripcion" class="form-control" autocomplete="off"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Foto:</label>
+                            <label for="fileUpload" class="file-upload btn btn-secondary btn-block">
+                                <i class="fa fa-upload mr-2"></i>Subir foto ...<input name="foto" id="fileUpload" type="file" accept="image/*">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Añadir producto</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="kt_crearImportacionArchivo" tabindex="-1" aria-labelledby="crearImportacionArchivoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="#" method="post" enctype='multipart/form-data'>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Importar productos mediante archivo</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="archivo" class="form-label">Archivo</label>
+                            <input type="file" class="form-control form-control-lg form-control-solid" name="archivo" accept=".csv" required />
+                            <div class="alert alert-info mt-3" role="alert">
+                                El archivo debe ser un CSV delimitado por ;. El orden de los campos es <b>Nombre;Código;Referencia;Código de barras;Precio;Categoría;Subcategoría;Descripción</b>.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" name="boton" value="importar" class="btn btn-primary">Subir archivo a importar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        categoriajs();
+    </script>
+{% endblock %}

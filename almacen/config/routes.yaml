@@ -1,0 +1,69 @@
+app_index:
+    path: /
+    controller: App\Controller\DefaultController::index
+        
+app_users:
+    resource: "routes/users.yaml"
+    prefix:   /administracion/usuarios
+        
+app_products:
+    resource: "routes/products.yaml"
+    prefix:   /administracion/productos
+        
+app_suppliers:
+    resource: "routes/suppliers.yaml"
+    prefix:   /administracion/proveedores
+        
+app_categories:
+    resource: "routes/categories.yaml"
+    prefix:   /administracion/categorias
+        
+app_warehouses:
+    resource: "routes/warehouses.yaml"
+    prefix:   /administracion/almacenes
+        
+app_service_areas:
+    resource: "routes/service_areas.yaml"
+    prefix:   /administracion/areas-de-servicio
+        
+app_warehouse_product:
+    resource: "routes/warehouse_product.yaml"
+    prefix:   /almacen/{almacen}/productos
+        
+app_warehouse_import:
+    resource: "routes/warehouse_import.yaml"
+    prefix:   /almacen/{almacen}/recepcion-de-pedidos
+        
+app_warehouse_stock:
+    resource: "routes/warehouse_stock.yaml"
+    prefix:   /almacen/{almacen}/stock
+        
+app_warehouse_transfer:
+    resource: "routes/warehouse_transfer.yaml"
+    prefix:   /almacen/{almacen}/traslados
+        
+app_warehouse_assignament:
+    resource: "routes/warehouse_assignament.yaml"
+    prefix:   /almacen/{almacen}/asignacion-de-materiales
+
+warehouse_products_photo:
+    path:     /almacen/{almacen}/producto/{id}/foto
+    controller: App\Controller\ProductController::photo
+    methods:  [GET, POST]
+    options:
+        expose: true
+    
+app_login:
+    path: /iniciar-sesion
+    controller: App\Controller\DefaultController::login
+    
+app_profile:
+    path: /mi-perfil
+    controller: App\Controller\DefaultController::profile
+    
+app_logout:
+    path: /salir
+    
+app_logout_vista:
+    path: /sesion-cerrada
+    controller: App\Controller\DefaultController::logout
