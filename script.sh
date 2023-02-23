@@ -2,10 +2,10 @@
 clear
 
 if [ $USER == "root" ]; then
-    if [ ! -d "/var/www/html/Almacen" ]; then
+    if [ ! -d "/var/www/html/almacen" ]; then
     echo "No se ha encontrado carpeta de almacen, carpeta creada"
-    sudo cp -r proyecto /var/www/html/Almacen
-    sudo chmod -R 777 /var/www/html/Almacen
+    sudo cp -r proyecto /var/www/html/almacen
+    sudo chmod -R 777 /var/www/html/almacen
     fi
 
     check=`which symfony`
@@ -32,9 +32,9 @@ if [ $USER == "root" ]; then
     check=`which symfony`
     if [ $check ]; then
     url=`hostname -I`
-    echo "Script acabado, servidor Symfony ejecutándose en 10 segundos, visite http://"$url"/Almacen/ para el asistente de configuración"
+    echo "Script acabado, servidor Symfony ejecutándose en 10 segundos, visite http://"$url"/almacen/ para el asistente de configuración"
     sleep 10
-    symfony server:start --dir="/var/www/html/Almacen/"
+    symfony server:start --dir="/var/www/html/almacen/"
     else
     echo "No se ha podido completar correctamente la instalación, vuelva a intentarlo"
     fi
