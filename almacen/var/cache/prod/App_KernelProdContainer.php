@@ -16,6 +16,6 @@ if (!\class_exists(App_KernelProdContainer::class, false)) {
 
 return new \ContainerLawXzQA\App_KernelProdContainer([
     'container.build_hash' => 'LawXzQA',
-    'container.build_id' => '1b9f75c5',
-    'container.build_time' => 1677184326,
+    'container.build_id' => '6f31fe98',
+    'container.build_time' => 1677187154,
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerLawXzQA');
