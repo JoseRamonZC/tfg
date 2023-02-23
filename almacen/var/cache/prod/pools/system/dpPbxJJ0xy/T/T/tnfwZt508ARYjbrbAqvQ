@@ -1,3 +1,0 @@
-<?php //Gedmo%255CLoggable%255CEntity%255CRepository%255CLogEntryRepository
-
-return [PHP_INT_MAX, []];

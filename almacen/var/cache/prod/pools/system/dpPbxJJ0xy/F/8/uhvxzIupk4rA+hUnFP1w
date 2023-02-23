@@ -1,3 +1,0 @@
-<?php //Gedmo%255CTree%255CEntity%255CRepository%255CMaterializedPathRepository
-
-return [PHP_INT_MAX, []];
