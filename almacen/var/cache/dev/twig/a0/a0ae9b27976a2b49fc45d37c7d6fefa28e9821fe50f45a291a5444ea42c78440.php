@@ -47,7 +47,7 @@ class __TwigTemplate_f0d70996dde7d1239260363a63bd22ef623cc56539025b88c5a1698c955
 <html lang=\"es\">
     <head>
         <meta charset=\"utf-8\" />
-        <title>Inventario | ";
+        <title>TFG Inventario | ";
         // line 5
         $this->displayBlock('title', $context, $blocks);
         echo "</title>
@@ -301,7 +301,7 @@ class __TwigTemplate_f0d70996dde7d1239260363a63bd22ef623cc56539025b88c5a1698c955
 <html lang=\"es\">
     <head>
         <meta charset=\"utf-8\" />
-        <title>Inventario | {% block title %}{% endblock %}</title>
+        <title>TFG Inventario | {% block title %}{% endblock %}</title>
         <meta name=\"description\" content=\"TFG Inventario\">
         <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"> 
         <link rel=\"shortcut icon\" href=\"{{ asset('imagenes/fav.png') }}\" />
