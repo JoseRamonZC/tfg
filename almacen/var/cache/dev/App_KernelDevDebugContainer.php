@@ -16,6 +16,6 @@ if (!\class_exists(App_KernelDevDebugContainer::class, false)) {
 
 return new \ContainerEhMtKfx\App_KernelDevDebugContainer([
     'container.build_hash' => 'EhMtKfx',
-    'container.build_id' => '87e84293',
-    'container.build_time' => 1677187729,
+    'container.build_id' => '166ec93f',
+    'container.build_time' => 1678100162,
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerEhMtKfx');

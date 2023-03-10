@@ -100,7 +100,7 @@ try {
     $conn->exec(file_get_contents('symfony_almacen.sql'));
     echo "<p>Estructura y admin importados<p>";
     echo "<p>Correo: admin@gmail.es<p>";
-    echo "<p>Contraseña: 123456<p>";
+    echo "<p>Contraseña: 1234<p>";
     echo "<h3>Diríjase a IP: <a href=\"http://".$_SERVER['SERVER_NAME'].":8000/\">http://".$_SERVER['SERVER_NAME'].":8000/</a></h3>";
 }
 catch (PDOException $e) {
