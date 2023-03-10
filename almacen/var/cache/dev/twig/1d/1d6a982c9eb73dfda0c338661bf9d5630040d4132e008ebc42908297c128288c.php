@@ -170,99 +170,103 @@ class __TwigTemplate_17e6fc272e1dcc5180a5fafa8411511b27719d7e1aad9e747c5756b542b
                                 <th>ALMACÉN</th>
                                 <th width=\"50px\">ESTADO</th>
                                 <th width=\"50px\">DETALLE</th>
-                            </tr>
+                                ";
+        // line 74
+        echo "                            </tr>
                         </thead>
                         <tbody>
                             ";
-        // line 76
+        // line 77
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["usuarios"]) || array_key_exists("usuarios", $context) ? $context["usuarios"] : (function () { throw new RuntimeError('Variable "usuarios" does not exist.', 76, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["usuarios"]) || array_key_exists("usuarios", $context) ? $context["usuarios"] : (function () { throw new RuntimeError('Variable "usuarios" does not exist.', 77, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["objeto"]) {
-            // line 77
+            // line 78
             echo "                                <tr>
                                     <td>";
-            // line 78
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["objeto"], "nombre", [], "any", false, false, false, 78), "html", null, true);
-            echo " ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["objeto"], "apellidos", [], "any", false, false, false, 78), "html", null, true);
-            echo "</td>
-                                    <td>";
             // line 79
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["objeto"], "username", [], "any", false, false, false, 79), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["objeto"], "nombre", [], "any", false, false, false, 79), "html", null, true);
+            echo " ";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["objeto"], "apellidos", [], "any", false, false, false, 79), "html", null, true);
             echo "</td>
                                     <td>";
             // line 80
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["objeto"], "email", [], "any", false, false, false, 80), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["objeto"], "username", [], "any", false, false, false, 80), "html", null, true);
+            echo "</td>
+                                    <td>";
+            // line 81
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["objeto"], "email", [], "any", false, false, false, 81), "html", null, true);
             echo "</td>
                                     <td class=\"center\">
                                         ";
-            // line 82
-            if (twig_in_filter("ROLE_GESTOR", twig_get_attribute($this->env, $this->source, $context["objeto"], "roles", [], "any", false, false, false, 82))) {
-                // line 83
+            // line 83
+            if (twig_in_filter("ROLE_GESTOR", twig_get_attribute($this->env, $this->source, $context["objeto"], "roles", [], "any", false, false, false, 83))) {
+                // line 84
                 echo "                                            Gestor de almacén<br />
                                         ";
             }
-            // line 85
+            // line 86
             echo "                                        ";
-            if (twig_in_filter("ROLE_ADMINISTRADOR", twig_get_attribute($this->env, $this->source, $context["objeto"], "roles", [], "any", false, false, false, 85))) {
-                // line 86
+            if (twig_in_filter("ROLE_ADMINISTRADOR", twig_get_attribute($this->env, $this->source, $context["objeto"], "roles", [], "any", false, false, false, 86))) {
+                // line 87
                 echo "                                            Administrador
                                         ";
             }
-            // line 88
+            // line 89
             echo "                                    </td>
                                     <td class=\"center\">
                                         ";
-            // line 90
+            // line 91
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["almacenes"]) || array_key_exists("almacenes", $context) ? $context["almacenes"] : (function () { throw new RuntimeError('Variable "almacenes" does not exist.', 90, $this->source); })()));
+            $context['_seq'] = twig_ensure_traversable((isset($context["almacenes"]) || array_key_exists("almacenes", $context) ? $context["almacenes"] : (function () { throw new RuntimeError('Variable "almacenes" does not exist.', 91, $this->source); })()));
             foreach ($context['_seq'] as $context["_key"] => $context["almacen"]) {
-                // line 91
+                // line 92
                 echo "                                            ";
-                if (twig_in_filter(twig_get_attribute($this->env, $this->source, $context["almacen"], "id", [], "any", false, false, false, 91), twig_get_attribute($this->env, $this->source, $context["objeto"], "almacenes", [], "any", false, false, false, 91))) {
-                    // line 92
+                if (twig_in_filter(twig_get_attribute($this->env, $this->source, $context["almacen"], "id", [], "any", false, false, false, 92), twig_get_attribute($this->env, $this->source, $context["objeto"], "almacenes", [], "any", false, false, false, 92))) {
+                    // line 93
                     echo "                                                ";
                     echo twig_escape_filter($this->env, $context["almacen"], "html", null, true);
                     echo "<br />
                                             ";
                 }
-                // line 94
+                // line 95
                 echo "                                        ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['almacen'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 95
+            // line 96
             echo "                                    </td>
                                     <td class=\"text-center align-middle\">
                                         ";
-            // line 97
-            if ((0 === twig_compare(twig_get_attribute($this->env, $this->source, $context["objeto"], "estado", [], "any", false, false, false, 97), "1"))) {
-                // line 98
+            // line 98
+            if ((0 === twig_compare(twig_get_attribute($this->env, $this->source, $context["objeto"], "estado", [], "any", false, false, false, 98), "1"))) {
+                // line 99
                 echo "                                            <i class=\"lar la-check-circle fs-2x text-primary\"></i>
                                         ";
             } else {
-                // line 100
+                // line 101
                 echo "                                            <i class=\"lar la-times-circle fs-2x text-danger\"></i>
                                         ";
             }
-            // line 102
+            // line 103
             echo "                                    </td>          
                                     <td class=\"text-center align-middle\">
                                         <a class=\"btn btn-primary btn-icon\" href=\"";
-            // line 104
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("users_show", ["id" => twig_get_attribute($this->env, $this->source, $context["objeto"], "id", [], "any", false, false, false, 104)]), "html", null, true);
+            // line 105
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("users_show", ["id" => twig_get_attribute($this->env, $this->source, $context["objeto"], "id", [], "any", false, false, false, 105)]), "html", null, true);
             echo "\">
                                             <i class=\"las la-eye fs-2x\"></i>
                                         </a>
                                     </td>
-                                </tr>
+                                    ";
+            // line 114
+            echo "                                </tr>
                             ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['objeto'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 110
+        // line 116
         echo "                        </tbody>
                     </table> 
                 </div>
@@ -270,8 +274,8 @@ class __TwigTemplate_17e6fc272e1dcc5180a5fafa8411511b27719d7e1aad9e747c5756b542b
             <div class=\"card-footer\">
                 <div class=\"navigation\">
                     ";
-        // line 116
-        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->render($this->env, (isset($context["usuarios"]) || array_key_exists("usuarios", $context) ? $context["usuarios"] : (function () { throw new RuntimeError('Variable "usuarios" does not exist.', 116, $this->source); })()));
+        // line 122
+        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->render($this->env, (isset($context["usuarios"]) || array_key_exists("usuarios", $context) ? $context["usuarios"] : (function () { throw new RuntimeError('Variable "usuarios" does not exist.', 122, $this->source); })()));
         echo "
                 </div>
             </div>
@@ -321,18 +325,18 @@ class __TwigTemplate_17e6fc272e1dcc5180a5fafa8411511b27719d7e1aad9e747c5756b542b
                         <div class=\"mb-3\">
                             <label class=\"form-label\">Almacenes:</label>
                             ";
-        // line 164
+        // line 170
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["almacenes"]) || array_key_exists("almacenes", $context) ? $context["almacenes"] : (function () { throw new RuntimeError('Variable "almacenes" does not exist.', 164, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["almacenes"]) || array_key_exists("almacenes", $context) ? $context["almacenes"] : (function () { throw new RuntimeError('Variable "almacenes" does not exist.', 170, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["objeto"]) {
-            // line 165
+            // line 171
             echo "                                <div class=\"form-check form-switch form-switch-sm form-check-custom form-check-solid mb-3\">
                                     <input class=\"form-check-input\" type=\"checkbox\" name=\"almacenes[]\" value=\"";
-            // line 166
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["objeto"], "id", [], "any", false, false, false, 166), "html", null, true);
+            // line 172
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["objeto"], "id", [], "any", false, false, false, 172), "html", null, true);
             echo "\" />
                                     <label class=\"form-check-label\">";
-            // line 167
+            // line 173
             echo twig_escape_filter($this->env, $context["objeto"], "html", null, true);
             echo "</label>
                                 </div>
@@ -341,7 +345,7 @@ class __TwigTemplate_17e6fc272e1dcc5180a5fafa8411511b27719d7e1aad9e747c5756b542b
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['objeto'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 170
+        // line 176
         echo "                        </div>
                     </div>
                     <div class=\"modal-footer\">
@@ -373,7 +377,7 @@ class __TwigTemplate_17e6fc272e1dcc5180a5fafa8411511b27719d7e1aad9e747c5756b542b
 
     public function getDebugInfo()
     {
-        return array (  345 => 170,  336 => 167,  332 => 166,  329 => 165,  325 => 164,  274 => 116,  266 => 110,  254 => 104,  250 => 102,  246 => 100,  242 => 98,  240 => 97,  236 => 95,  230 => 94,  224 => 92,  221 => 91,  217 => 90,  213 => 88,  209 => 86,  206 => 85,  202 => 83,  200 => 82,  195 => 80,  191 => 79,  185 => 78,  182 => 77,  178 => 76,  148 => 51,  139 => 47,  123 => 34,  96 => 10,  88 => 4,  78 => 3,  59 => 2,  36 => 1,);
+        return array (  349 => 176,  340 => 173,  336 => 172,  333 => 171,  329 => 170,  278 => 122,  270 => 116,  263 => 114,  256 => 105,  252 => 103,  248 => 101,  244 => 99,  242 => 98,  238 => 96,  232 => 95,  226 => 93,  223 => 92,  219 => 91,  215 => 89,  211 => 87,  208 => 86,  204 => 84,  202 => 83,  197 => 81,  193 => 80,  187 => 79,  184 => 78,  180 => 77,  175 => 74,  148 => 51,  139 => 47,  123 => 34,  96 => 10,  88 => 4,  78 => 3,  59 => 2,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -450,6 +454,7 @@ class __TwigTemplate_17e6fc272e1dcc5180a5fafa8411511b27719d7e1aad9e747c5756b542b
                                 <th>ALMACÉN</th>
                                 <th width=\"50px\">ESTADO</th>
                                 <th width=\"50px\">DETALLE</th>
+                                {# <th width=\"50px\">BORRAR</th> #}
                             </tr>
                         </thead>
                         <tbody>
@@ -485,6 +490,11 @@ class __TwigTemplate_17e6fc272e1dcc5180a5fafa8411511b27719d7e1aad9e747c5756b542b
                                             <i class=\"las la-eye fs-2x\"></i>
                                         </a>
                                     </td>
+                                    {# <td class=\"text-center align-middle\">
+                                        <a class=\"btn btn-primary btn-icon\" href=\"{{ path('users_delete',{'id':objeto.id}) }}\">
+                                            <i class=\"las la-trash fs-2x\"></i>
+                                        </a>
+                                    </td> #}
                                 </tr>
                             {% endfor %}
                         </tbody>

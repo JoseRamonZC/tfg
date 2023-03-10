@@ -4,8 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Usuario;
 use App\Entity\Almacen;
+use App\Repository\UsuarioRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
@@ -173,4 +175,14 @@ class UserController extends AbstractController {
         ]);
     }
 
+    public function delete(Request $request, Usuario $usuario, UsuarioRepository $usuarioRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$usuario->getId(), $request->request->get('_token'))) {
+            $usuarioRepository->remove($usuario);
+        }
+
+        return $this->redirectToRoute('users_index', [], Response::HTTP_SEE_OTHER);
+    }
+
 }
+

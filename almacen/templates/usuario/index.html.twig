@@ -70,6 +70,7 @@
                                 <th>ALMACÉN</th>
                                 <th width="50px">ESTADO</th>
                                 <th width="50px">DETALLE</th>
+                                {# <th width="50px">BORRAR</th> #}
                             </tr>
                         </thead>
                         <tbody>
@@ -105,6 +106,11 @@
                                             <i class="las la-eye fs-2x"></i>
                                         </a>
                                     </td>
+                                    {# <td class="text-center align-middle">
+                                        <a class="btn btn-primary btn-icon" href="{{ path('users_delete',{'id':objeto.id}) }}">
+                                            <i class="las la-trash fs-2x"></i>
+                                        </a>
+                                    </td> #}
                                 </tr>
                             {% endfor %}
                         </tbody>

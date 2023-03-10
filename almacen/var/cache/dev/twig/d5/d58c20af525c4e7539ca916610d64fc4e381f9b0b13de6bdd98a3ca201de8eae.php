@@ -44,7 +44,7 @@ class __TwigTemplate_e97b4f573fe1af5e0b56a45e1fc906ff39897512cbde616bb2f4f502a4d
 <html lang=\"es\">
     <head>
         <meta charset=\"utf-8\" />
-        <title>SACYR Inventario | Iniciar sesión</title>
+        <title>TFG Inventario | Iniciar sesión</title>
         <meta name=\"description\" content=\"SACYR Inventario\">
         <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"> 
         <link rel=\"shortcut icon\" href=\"";
@@ -163,7 +163,7 @@ class __TwigTemplate_e97b4f573fe1af5e0b56a45e1fc906ff39897512cbde616bb2f4f502a4d
 <html lang=\"es\">
     <head>
         <meta charset=\"utf-8\" />
-        <title>SACYR Inventario | Iniciar sesión</title>
+        <title>TFG Inventario | Iniciar sesión</title>
         <meta name=\"description\" content=\"SACYR Inventario\">
         <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"> 
         <link rel=\"shortcut icon\" href=\"{{ asset('imagenes/fav.png') }}\" />

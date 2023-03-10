@@ -33,12 +33,11 @@ class UsuarioRepository extends ServiceEntityRepository implements PasswordUpgra
         }
     }
 
-    public function remove(Usuario $entity, bool $flush = false): void
+    public function remove(Usuario $entity, bool $flush = true): void
     {
-        $this->getEntityManager()->remove($entity);
-
+        $this->_em->remove($entity);
         if ($flush) {
-            $this->getEntityManager()->flush();
+            $this->_em->flush();
         }
     }
 

@@ -60,7 +60,7 @@ class __TwigTemplate_9e03053873dbb0030e6a23a409c0195ece632462b42b75b57736b3810dc
                         <img alt=\"Logo\" src=\"";
         // line 15
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("imagenes/logo_blanco.png"), "html", null, true);
-        echo "\" class=\"h-25px h-lg-30px\" />
+        echo "\" class=\"h-45px h-lg-45px\" />
                     </a>
                 </div>
             </div>
@@ -429,7 +429,7 @@ class __TwigTemplate_9e03053873dbb0030e6a23a409c0195ece632462b42b75b57736b3810dc
                         </span>
                     </button>
                     <a href=\"{{ path('app_index') }}\" class=\"d-flex align-items-center\">
-                        <img alt=\"Logo\" src=\"{{ asset('imagenes/logo_blanco.png') }}\" class=\"h-25px h-lg-30px\" />
+                        <img alt=\"Logo\" src=\"{{ asset('imagenes/logo_blanco.png') }}\" class=\"h-45px h-lg-45px\" />
                     </a>
                 </div>
             </div>
