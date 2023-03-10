@@ -45,7 +45,7 @@ class __TwigTemplate_9e03053873dbb0030e6a23a409c0195ece632462b42b75b57736b3810dc
         <div class=\"app-container container-xxl d-flex align-items-stretch justify-content-between\">
             <div class=\"d-flex flex-stack flex-grow-1 flex-lg-grow-0\">
                 <div class=\"d-flex align-items-center me-7\">
-                    <button class=\"d-lg-none btn btn-icon btn-color-white bg-hover-white bg-hover-opacity-10 ms-n2 me-2\" id=\"kt_header_secondary_toggle\">
+                    <button type=\"button\" class=\"d-lg-none btn btn-icon btn-color-white bg-hover-white bg-hover-opacity-10 ms-n2 me-2\" id=\"kt_header_secondary_toggle\">
                         <span class=\"svg-icon svg-icon-1\">
                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\">
                                 <path d=\"M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z\" fill=\"currentColor\" />
@@ -420,7 +420,7 @@ class __TwigTemplate_9e03053873dbb0030e6a23a409c0195ece632462b42b75b57736b3810dc
         <div class=\"app-container container-xxl d-flex align-items-stretch justify-content-between\">
             <div class=\"d-flex flex-stack flex-grow-1 flex-lg-grow-0\">
                 <div class=\"d-flex align-items-center me-7\">
-                    <button class=\"d-lg-none btn btn-icon btn-color-white bg-hover-white bg-hover-opacity-10 ms-n2 me-2\" id=\"kt_header_secondary_toggle\">
+                    <button type=\"button\" class=\"d-lg-none btn btn-icon btn-color-white bg-hover-white bg-hover-opacity-10 ms-n2 me-2\" id=\"kt_header_secondary_toggle\">
                         <span class=\"svg-icon svg-icon-1\">
                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\">
                                 <path d=\"M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z\" fill=\"currentColor\" />

@@ -27,6 +27,8 @@ class UserController extends AbstractController {
                 ));
             }
 
+            //Cambiamos los datos del usuario seleccionado para ver si está en uso, si no es así, procedemos a crear uno nuevo
+
             $usuario = new Usuario();
 
             $usuario->setNombre($request->request->get('nombre'));
@@ -49,6 +51,8 @@ class UserController extends AbstractController {
                         'mensaje' => 'El usuario se ha añadido correctamente',
             ));
         }
+
+        //Busqueda de usuario mediante rol y usuario
 
         if (!isset($_SESSION['buscar_usuario'])) {
             $_SESSION['buscar_usuario'] = "";
@@ -113,6 +117,8 @@ class UserController extends AbstractController {
         ]);
     }
 
+    //mostramos los usuarios
+
     public function show(UserPasswordEncoderInterface $encoder, Usuario $usuario, Request $request, $ex = null, $cod = null, $msg = null) {
 
         $em = $this->getDoctrine();
@@ -131,6 +137,8 @@ class UserController extends AbstractController {
                     ));
                 }
             }
+
+            //Cambiamos los datos del usuario seleccionado
 
             $usuario->setNombre($request->request->get('nombre'));
             $usuario->setApellidos($request->request->get('apellidos'));

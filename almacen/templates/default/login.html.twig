@@ -31,14 +31,14 @@
                                 <div class="text-gray-400 fw-bold fs-4">Gestión de inventario</div>
                             </div>
                             <div class="fv-row mb-10">
-                                <label class="form-label fs-6 fw-bolder text-dark">Usuario</label>
-                                <input class="form-control form-control-lg form-control-solid" type="text" name="_username" autocomplete="off" required autofocus />
+                                <label for="_username" class="form-label fs-6 fw-bolder text-dark">Usuario</label>
+                                <input id="_username" class="form-control form-control-lg form-control-solid" type="text" name="_username" autocomplete="off" required autofocus />
                             </div>
                             <div class="fv-row mb-10">
                                 <div class="d-flex flex-stack mb-2">
-                                    <label class="form-label fw-bolder text-dark fs-6 mb-0">Contraseña</label>
+                                    <label for="_password" class="form-label fw-bolder text-dark fs-6 mb-0">Contraseña</label>
                                 </div>
-                                <input class="form-control form-control-lg form-control-solid" type="password" name="_password" autocomplete="off" />
+                                <input id="_password" class="form-control form-control-lg form-control-solid" type="password" name="_password" autocomplete="off" />
                                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                             </div>
                             <div class="text-center">
