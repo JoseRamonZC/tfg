@@ -405,6 +405,13 @@
         <argument type="service" id=".service_locator.GNc8e5B.App\Controller\DefaultController"/>
       </call>
     </service>
+    <service id="App\Controller\PDFController" class="App\Controller\PDFController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.GNc8e5B.App\Controller\PDFController"/>
+      </call>
+    </service>
     <service id="App\Controller\ProductController" class="App\Controller\ProductController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -6763,6 +6770,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\DefaultController" class="App\Controller\DefaultController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\DefaultController" class="App\Controller\DefaultController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\DefaultController" class="App\Controller\DefaultController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\PDFController" class="App\Controller\PDFController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\PDFController" class="App\Controller\PDFController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\PDFController" class="App\Controller\PDFController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ProductController" class="App\Controller\ProductController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ProductController" class="App\Controller\ProductController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ProductController" class="App\Controller\ProductController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -7160,6 +7170,13 @@
         <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
       </argument>
     </service>
+    <service id=".errored.bOjGlk6" class="Knp\Snnapy\Pdf"/>
+    <service id=".service_locator.lr6LYlL" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="pdf" type="service_closure" id=".errored.bOjGlk6"/>
+      </argument>
+    </service>
     <service id=".service_locator.1jRuMKL" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7211,6 +7228,12 @@
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="usuario" type="service_closure" id=".errored..service_locator.n26dx4X.App\Entity\Usuario"/>
+        <argument key="usuarioRepository" type="service_closure" id="App\Repository\UsuarioRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.6N554v1" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
         <argument key="usuarioRepository" type="service_closure" id="App\Repository\UsuarioRepository"/>
       </argument>
     </service>
@@ -7303,7 +7326,7 @@
         <argument key="usuario" type="service_closure" id=".errored..service_locator.xUL7GfW.Symfony\Component\Security\Core\User\UserInterface"/>
       </argument>
     </service>
-    <service id=".service_locator.HGYJjrN" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.ZOHgI2f" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\CategoryController::index" type="service_closure" id=".service_locator.vO4TcKs"/>
@@ -7311,6 +7334,7 @@
         <argument key="App\Controller\DefaultController::index" type="service_closure" id=".service_locator.CpaXrFh"/>
         <argument key="App\Controller\DefaultController::login" type="service_closure" id=".service_locator.UDgw6Ol"/>
         <argument key="App\Controller\DefaultController::profile" type="service_closure" id=".service_locator.cTx4KSB"/>
+        <argument key="App\Controller\PDFController::index" type="service_closure" id=".service_locator.lr6LYlL"/>
         <argument key="App\Controller\ProductController::index" type="service_closure" id=".service_locator.vO4TcKs"/>
         <argument key="App\Controller\ProductController::photo" type="service_closure" id=".service_locator.1jRuMKL"/>
         <argument key="App\Controller\ProductController::show" type="service_closure" id=".service_locator.1jRuMKL"/>
@@ -7322,6 +7346,7 @@
         <argument key="App\Controller\SupplierController::show" type="service_closure" id=".service_locator.Xi.HRQ7"/>
         <argument key="App\Controller\UserController::delete" type="service_closure" id=".service_locator.n26dx4X"/>
         <argument key="App\Controller\UserController::index" type="service_closure" id=".service_locator.husiMrN"/>
+        <argument key="App\Controller\UserController::pdf" type="service_closure" id=".service_locator.6N554v1"/>
         <argument key="App\Controller\UserController::show" type="service_closure" id=".service_locator.IKbd_0n"/>
         <argument key="App\Controller\WarehouseAssignamentController::index" type="service_closure" id=".service_locator.qe6gE9c"/>
         <argument key="App\Controller\WarehouseAssignamentController::show" type="service_closure" id=".service_locator.Xkft7B4"/>
@@ -7355,6 +7380,7 @@
         <argument key="App\Controller\DefaultController:index" type="service_closure" id=".service_locator.CpaXrFh"/>
         <argument key="App\Controller\DefaultController:login" type="service_closure" id=".service_locator.UDgw6Ol"/>
         <argument key="App\Controller\DefaultController:profile" type="service_closure" id=".service_locator.cTx4KSB"/>
+        <argument key="App\Controller\PDFController:index" type="service_closure" id=".service_locator.lr6LYlL"/>
         <argument key="App\Controller\ProductController:index" type="service_closure" id=".service_locator.vO4TcKs"/>
         <argument key="App\Controller\ProductController:photo" type="service_closure" id=".service_locator.1jRuMKL"/>
         <argument key="App\Controller\ProductController:show" type="service_closure" id=".service_locator.1jRuMKL"/>
@@ -7366,6 +7392,7 @@
         <argument key="App\Controller\SupplierController:show" type="service_closure" id=".service_locator.Xi.HRQ7"/>
         <argument key="App\Controller\UserController:delete" type="service_closure" id=".service_locator.n26dx4X"/>
         <argument key="App\Controller\UserController:index" type="service_closure" id=".service_locator.husiMrN"/>
+        <argument key="App\Controller\UserController:pdf" type="service_closure" id=".service_locator.6N554v1"/>
         <argument key="App\Controller\UserController:show" type="service_closure" id=".service_locator.IKbd_0n"/>
         <argument key="App\Controller\WarehouseAssignamentController:index" type="service_closure" id=".service_locator.qe6gE9c"/>
         <argument key="App\Controller\WarehouseAssignamentController:show" type="service_closure" id=".service_locator.Xkft7B4"/>
@@ -7785,6 +7812,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.GNc8e5B" method="withContext"/>
     </service>
+    <service id=".service_locator.GNc8e5B.App\Controller\PDFController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\PDFController"/>
+      <argument>App\Controller\PDFController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.GNc8e5B" method="withContext"/>
+    </service>
     <service id=".service_locator.GNc8e5B.App\Controller\ProductController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\ProductController"/>
       <argument>App\Controller\ProductController</argument>
@@ -8025,12 +8058,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.HGYJjrN"/>
+      <argument type="service" id=".service_locator.ZOHgI2f"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.HGYJjrN"/>
+      <argument type="service" id=".service_locator.ZOHgI2f"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -9092,7 +9125,7 @@
     <service id="Knp\Component\Pager\PaginatorInterface" alias="knp_paginator"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.HGYJjrN"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.ZOHgI2f"/>
     <service id="session" alias=".session.do-not-use" public="true">
       <deprecated package="symfony/framework-bundle" version="5.3">The "%alias_id%" service and "SessionInterface" alias are deprecated, use "$requestStack-&gt;getSession()" instead.</deprecated>
     </service>
@@ -9119,7 +9152,7 @@
     <service id=".service_locator.0GV1BZZ" alias=".service_locator.gSv9zYw"/>
     <service id=".service_locator.AThWcdu" alias=".service_locator.cTx4KSB"/>
     <service id=".service_locator.BoUEIJD" alias=".service_locator.qe6gE9c"/>
-    <service id=".service_locator..59IPza" alias=".service_locator.HGYJjrN"/>
+    <service id=".service_locator.W8cEGtU" alias=".service_locator.ZOHgI2f"/>
     <service id=".service_locator.wKF4yn1" alias=".service_locator.19_mNxd"/>
     <service id=".service_locator.Za9MpXe" alias=".service_locator.y4dplYt"/>
     <service id=".service_locator.IVJY4wz" alias=".service_locator.J.Y4u43"/>
@@ -9161,6 +9194,7 @@
     <service id=".service_locator.rFd3gsn" alias=".service_locator.husiMrN"/>
     <service id=".service_locator.QKd76lA" alias=".service_locator.IKbd_0n"/>
     <service id=".service_locator.2pDEKv3" alias=".service_locator.n26dx4X"/>
+    <service id=".service_locator.O9JStUd" alias=".service_locator.6N554v1"/>
     <service id=".service_locator.97gJkCz" alias=".service_locator.qe6gE9c"/>
     <service id=".service_locator.4.uvWnl" alias=".service_locator.Xkft7B4"/>
     <service id=".service_locator.75vvjGU" alias=".service_locator.0jyU7Ie"/>

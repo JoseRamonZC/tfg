@@ -192,5 +192,31 @@ class UserController extends AbstractController {
         return $this->redirectToRoute('users_index', [], Response::HTTP_SEE_OTHER);
     }
 
+    #[Route('/pdf', name: 'user_pdf', methods: ['GET'])]
+    public function pdf(UsuarioRepository $usuarioRepository): Response
+    {
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+
+        $dompdf = new Dompdf($pdfOptions);
+        
+        $usuario = $usuarioRepository->findAll();
+
+        $html = $this->renderView('usuario/pdf.html.twig', [
+            'users' => $usuario,
+        ]);
+
+        //Cargamos el html en pdf y seleccionamos el tamaño 
+
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->render();
+
+        $dompdf->stream("mypdf.pdf", [
+            "Attachment" =>true
+        ]);
+        
+    }
+
 }
 

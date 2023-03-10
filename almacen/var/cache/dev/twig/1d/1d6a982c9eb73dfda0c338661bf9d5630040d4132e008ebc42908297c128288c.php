@@ -257,16 +257,18 @@ class __TwigTemplate_17e6fc272e1dcc5180a5fafa8411511b27719d7e1aad9e747c5756b542b
             echo "\">
                                             <i class=\"las la-eye fs-2x\"></i>
                                         </a>
-                                    </td>
+                                         ";
+            // line 109
+            echo "                                    </td>
                                     ";
-            // line 114
+            // line 115
             echo "                                </tr>
                             ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['objeto'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 116
+        // line 117
         echo "                        </tbody>
                     </table> 
                 </div>
@@ -274,8 +276,8 @@ class __TwigTemplate_17e6fc272e1dcc5180a5fafa8411511b27719d7e1aad9e747c5756b542b
             <div class=\"card-footer\">
                 <div class=\"navigation\">
                     ";
-        // line 122
-        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->render($this->env, (isset($context["usuarios"]) || array_key_exists("usuarios", $context) ? $context["usuarios"] : (function () { throw new RuntimeError('Variable "usuarios" does not exist.', 122, $this->source); })()));
+        // line 123
+        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->render($this->env, (isset($context["usuarios"]) || array_key_exists("usuarios", $context) ? $context["usuarios"] : (function () { throw new RuntimeError('Variable "usuarios" does not exist.', 123, $this->source); })()));
         echo "
                 </div>
             </div>
@@ -325,18 +327,18 @@ class __TwigTemplate_17e6fc272e1dcc5180a5fafa8411511b27719d7e1aad9e747c5756b542b
                         <div class=\"mb-3\">
                             <label class=\"form-label\">Almacenes:</label>
                             ";
-        // line 170
+        // line 171
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["almacenes"]) || array_key_exists("almacenes", $context) ? $context["almacenes"] : (function () { throw new RuntimeError('Variable "almacenes" does not exist.', 170, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["almacenes"]) || array_key_exists("almacenes", $context) ? $context["almacenes"] : (function () { throw new RuntimeError('Variable "almacenes" does not exist.', 171, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["objeto"]) {
-            // line 171
+            // line 172
             echo "                                <div class=\"form-check form-switch form-switch-sm form-check-custom form-check-solid mb-3\">
                                     <input class=\"form-check-input\" type=\"checkbox\" name=\"almacenes[]\" value=\"";
-            // line 172
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["objeto"], "id", [], "any", false, false, false, 172), "html", null, true);
+            // line 173
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["objeto"], "id", [], "any", false, false, false, 173), "html", null, true);
             echo "\" />
                                     <label class=\"form-check-label\">";
-            // line 173
+            // line 174
             echo twig_escape_filter($this->env, $context["objeto"], "html", null, true);
             echo "</label>
                                 </div>
@@ -345,7 +347,7 @@ class __TwigTemplate_17e6fc272e1dcc5180a5fafa8411511b27719d7e1aad9e747c5756b542b
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['objeto'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 176
+        // line 177
         echo "                        </div>
                     </div>
                     <div class=\"modal-footer\">
@@ -377,7 +379,7 @@ class __TwigTemplate_17e6fc272e1dcc5180a5fafa8411511b27719d7e1aad9e747c5756b542b
 
     public function getDebugInfo()
     {
-        return array (  349 => 176,  340 => 173,  336 => 172,  333 => 171,  329 => 170,  278 => 122,  270 => 116,  263 => 114,  256 => 105,  252 => 103,  248 => 101,  244 => 99,  242 => 98,  238 => 96,  232 => 95,  226 => 93,  223 => 92,  219 => 91,  215 => 89,  211 => 87,  208 => 86,  204 => 84,  202 => 83,  197 => 81,  193 => 80,  187 => 79,  184 => 78,  180 => 77,  175 => 74,  148 => 51,  139 => 47,  123 => 34,  96 => 10,  88 => 4,  78 => 3,  59 => 2,  36 => 1,);
+        return array (  351 => 177,  342 => 174,  338 => 173,  335 => 172,  331 => 171,  280 => 123,  272 => 117,  265 => 115,  262 => 109,  256 => 105,  252 => 103,  248 => 101,  244 => 99,  242 => 98,  238 => 96,  232 => 95,  226 => 93,  223 => 92,  219 => 91,  215 => 89,  211 => 87,  208 => 86,  204 => 84,  202 => 83,  197 => 81,  193 => 80,  187 => 79,  184 => 78,  180 => 77,  175 => 74,  148 => 51,  139 => 47,  123 => 34,  96 => 10,  88 => 4,  78 => 3,  59 => 2,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -489,6 +491,7 @@ class __TwigTemplate_17e6fc272e1dcc5180a5fafa8411511b27719d7e1aad9e747c5756b542b
                                         <a class=\"btn btn-primary btn-icon\" href=\"{{ path('users_show',{'id':objeto.id}) }}\">
                                             <i class=\"las la-eye fs-2x\"></i>
                                         </a>
+                                         {# <a class=\"mr-3\" href=\"{{ path('user_pdf') }}\"><i class=\"las la-file-download fs-2x\"></i></a> #}
                                     </td>
                                     {# <td class=\"text-center align-middle\">
                                         <a class=\"btn btn-primary btn-icon\" href=\"{{ path('users_delete',{'id':objeto.id}) }}\">
