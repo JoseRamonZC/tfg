@@ -84,7 +84,7 @@ try {
     $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 }
 catch (PDOException $e) {
-    return "Error conectándose a la base de datos: " . $e->getMessage();
+    echo "Error conectándose a la base de datos: " . $e->getMessage();
 }
 
 try {
@@ -93,7 +93,7 @@ try {
     echo "<p>Base de datos creada</p>";
 }
 catch (PDOException $e) {
-    return "Error creando la base de datos: " . $e->getMessage();
+    echo "Error creando la base de datos: " . $e->getMessage();
 }
 
 try {
@@ -104,7 +104,7 @@ try {
     echo "<h3>Diríjase a IP: <a href=\"http://".$_SERVER['SERVER_NAME'].":8000/\">http://".$_SERVER['SERVER_NAME'].":8000/</a></h3>";
 }
 catch (PDOException $e) {
-    return "Error creando la estructura: " . $e->getMessage();
+    echo "Error creando la estructura: " . $e->getMessage();
 }
 
 
