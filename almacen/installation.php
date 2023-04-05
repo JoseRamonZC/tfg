@@ -16,7 +16,7 @@ $env = '
 # https://symfony.com/doc/current/best_practices.html#use-environment-variables-for-infrastructure-configuration
 
 ###> symfony/framework-bundle ###
-APP_ENV=prod
+APP_ENV=dev
 APP_SECRET=2e37e84be218b82612e256a3558283bc
 ###< symfony/framework-bundle ###
 
@@ -58,9 +58,6 @@ try {
   
     $cx->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
   
-    $sql = "UPDATE user SET roles = \'[\"ROLE_USER_ACCEPT\"]\' where id = ".$_POST[\'user\'];
-    $cx->exec( $sql );
-    echo "\nSUCCESS!\n";
   }
   catch (PDOException $e) {
     die( "Error: " . $e->getMessage() . "\n" );

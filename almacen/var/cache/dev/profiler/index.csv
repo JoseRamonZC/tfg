@@ -985,3 +985,12 @@ abb9e5,::1,GET,https://localhost/tfg/almacen/public/index.php/js/routing?callbac
 10a70f,::1,GET,https://localhost/tfg/almacen/public/index.php/almacen/1/stock/,1678468383,,200
 908b95,::1,GET,https://localhost/tfg/almacen/public/index.php/almacen/1/producto/3/foto,1678468383,,200
 1b6988,::1,GET,https://localhost/tfg/almacen/public/index.php/js/routing?callback=fos.Router.setData,1678468383,,200
+ce5c34,::1,GET,https://localhost/tfg/almacen/public/index.php/administracion/usuarios/2/detalle?codigo=%C2%A1Correcto%21&excepcion=1&mensaje=El%20usuario%20se%20ha%20modificado%20correctamente,1680708053,,302
+f63565,::1,GET,https://localhost/tfg/almacen/public/index.php/administracion/usuarios/2/detalle?codigo=%C2%A1Correcto%21&excepcion=1&mensaje=El%20usuario%20se%20ha%20modificado%20correctamente,1680708053,,302
+972a8f,::1,GET,https://localhost/tfg/almacen/public/index.php/administracion/usuarios/2/detalle?codigo=%C2%A1Correcto%21&excepcion=1&mensaje=El%20usuario%20se%20ha%20modificado%20correctamente,1680708053,,302
+d16666,::1,GET,https://localhost/tfg/almacen/public/index.php/iniciar-sesion,1680708057,,200
+3f48f3,::1,GET,https://localhost/tfg/almacen/public/index.php/_wdt/d16666,1680708057,,302
+5b2680,::1,GET,https://localhost/tfg/almacen/public/index.php/iniciar-sesion,1680708058,,200
+572a2d,127.0.0.1,GET,https://localhost/tfg/almacen/public/index.php/iniciar-sesion,1680708081,,200
+7ec438,127.0.0.1,GET,https://localhost/tfg/almacen/public/index.php/_wdt/572a2d,1680708082,,302
+37b684,127.0.0.1,GET,https://localhost/tfg/almacen/public/index.php/iniciar-sesion,1680708082,,200
