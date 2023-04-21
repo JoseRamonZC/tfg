@@ -1220,3 +1220,7 @@ f726f6,127.0.0.1,GET,https://localhost/tfg/almacen/public/index.php/iniciar-sesi
 45ef1c,127.0.0.1,GET,https://localhost/tfg/almacen/public/index.php/iniciar-sesion,1682105911,,200
 41927c,127.0.0.1,GET,https://localhost/tfg/almacen/public/index.php/_wdt/45ef1c,1682105911,,302
 4d541e,127.0.0.1,GET,https://localhost/tfg/almacen/public/index.php/iniciar-sesion,1682105911,,200
+e54926,::1,GET,https://localhost/tfg/almacen/public/index.php/iniciar-sesion/,1682106694,,301
+dfe9d5,::1,GET,https://localhost/tfg/almacen/public/index.php/iniciar-sesion,1682106694,,200
+4cea4d,::1,GET,https://localhost/tfg/almacen/public/index.php/_wdt/dfe9d5,1682106695,,302
+25ba3d,::1,GET,https://localhost/tfg/almacen/public/index.php/iniciar-sesion,1682106695,,200
