@@ -54,7 +54,7 @@ warehouse_products_photo:
         expose: true
     
 app_login:
-    path: /login
+    path: /iniciar-sesion
     controller: App\Controller\DefaultController::login
     
 app_profile:
