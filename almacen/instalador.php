@@ -103,6 +103,3 @@ try {
 catch (PDOException $e) {
     echo "Error creando la estructura: " . $e->getMessage();
 }
-
-
-
