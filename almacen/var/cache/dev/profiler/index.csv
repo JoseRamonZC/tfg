@@ -1232,3 +1232,16 @@ dfe9d5,::1,GET,https://localhost/tfg/almacen/public/index.php/iniciar-sesion,168
 f29ef7,127.0.0.1,GET,https://localhost/tfg/almacen/public/index.php/iniciar-sesion,1682249678,,200
 7dd322,127.0.0.1,GET,https://localhost/tfg/almacen/public/index.php/_wdt/f29ef7,1682249679,,302
 05bb62,127.0.0.1,GET,https://localhost/tfg/almacen/public/index.php/iniciar-sesion,1682249679,,200
+53a8ae,127.0.0.1,POST,https://localhost/tfg/almacen/public/index.php/iniciar-sesion,1682249782,,302
+8c551a,127.0.0.1,GET,https://localhost/tfg/almacen/public/index.php/iniciar-sesion,1682249782,,200
+ac5363,127.0.0.1,GET,https://localhost/tfg/almacen/public/index.php/_wdt/8c551a,1682249783,,302
+21f8b1,127.0.0.1,GET,https://localhost/tfg/almacen/public/index.php/iniciar-sesion,1682249783,,200
+84948f,127.0.0.1,POST,https://localhost/tfg/almacen/public/index.php/iniciar-sesion,1682249792,,302
+aeccfc,127.0.0.1,GET,https://localhost/tfg/almacen/public/index.php/iniciar-sesion,1682249793,,200
+7a56ee,127.0.0.1,GET,https://localhost/tfg/almacen/public/index.php/_wdt/aeccfc,1682249793,,302
+27e196,127.0.0.1,GET,https://localhost/tfg/almacen/public/index.php/iniciar-sesion,1682249793,,200
+d37095,127.0.0.1,POST,https://localhost/tfg/almacen/public/index.php/iniciar-sesion,1682249798,,302
+ac34a7,127.0.0.1,GET,https://localhost/tfg/almacen/public/index.php/,1682249798,,302
+a49a4f,127.0.0.1,GET,https://localhost/tfg/almacen/public/index.php/_fragment?_path=_format%3Dhtml%26_locale%3Des%26_controller%3DApp%255CController%255CDefaultController%253A%253Aheader,1682249802,cde222,200
+cde222,127.0.0.1,GET,https://localhost/tfg/almacen/public/index.php/almacen/1/stock/,1682249803,,200
+a26546,127.0.0.1,GET,https://localhost/tfg/almacen/public/index.php/js/routing?callback=fos.Router.setData,1682249804,,200

@@ -96,7 +96,7 @@ catch (PDOException $e) {
 try {
     $conn->exec(file_get_contents('symfony_almacen.sql'));
     echo "<p>Estructura y admin importados<p>";
-    echo "<p>Correo: admin@gmail.es<p>";
+    echo "<p>Correo: admin<p>";
     echo "<p>Contraseña: 1234<p>";
     echo "<h3><a href=\https://localhost/tfg/almacen/public/index.php/iniciar-sesion\>Pinche aquí</a></h3>";
     echo "<p>Acuerdese de borrar 192.168.1.236 del enlace.<p>";
