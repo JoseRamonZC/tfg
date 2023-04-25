@@ -15,6 +15,8 @@
                 <h1>Disfrute de su experiencia</h1>
 
             <?php require('instalador.php'); ?>
+                
+                <h3><a href="https://localhost/tfg/almacen/public/index.php/iniciar-sesion">Acceder</a></h3>
 
             </div>
         </div>
